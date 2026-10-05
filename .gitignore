@@ -1,0 +1,25 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Environments and local secrets
+.env
+.env.*
+.venv/
+venv/
+env/
+*.egg-info/
+
+# PhysioNet downloads and any derived caches
+data/raw/
+data/processed/
+*.pkl
+*.tar.gz
+
+# Generated outputs and trained weights
+outputs/
+checkpoints/
+*.pt
+*.pth

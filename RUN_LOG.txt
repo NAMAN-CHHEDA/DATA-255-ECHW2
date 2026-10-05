@@ -1,0 +1,23 @@
+DATA 255 Homework 2 run log
+Configured seed: 8893
+
+No experiments have been executed.
+This file must stay free of invented output.
+After you run an experiment yourself, append one block copied from that process.
+Do not add metrics, epoch counts, or device names that the run did not print.
+
+--- copy one block per real run below this line ---
+
+timestamp:
+command:
+experiment:
+model:
+device:
+epochs completed:
+early stopping epoch:
+checkpoint:
+validation AUROC:
+validation AUPRC:
+test AUROC:
+test AUPRC:
+notes:

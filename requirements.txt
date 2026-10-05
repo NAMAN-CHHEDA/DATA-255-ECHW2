@@ -1,0 +1,8 @@
+# Unpinned on purpose. Resolve these in your own virtual environment.
+numpy
+pandas
+torch
+scikit-learn
+matplotlib
+tqdm
+torchdiffeq
