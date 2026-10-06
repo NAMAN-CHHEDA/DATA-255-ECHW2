@@ -29,12 +29,17 @@ def predict_logits(
     """Collect CPU labels and finite logits without applying a sigmoid."""
     model.to(device)
     model.eval()
+    resolved_device = torch.device(device)
     collected_labels: list[torch.Tensor] = []
     collected_logits: list[torch.Tensor] = []
 
     with torch.no_grad():
         for raw_batch in loader:
-            batch = move_to_device(raw_batch, device)
+            batch = move_to_device(
+                raw_batch,
+                device,
+                non_blocking=resolved_device.type == "cuda",
+            )
             labels = batch["label"].to(dtype=torch.float32).reshape(-1)
             logits = forward_fn(model, batch)
             if logits.shape != labels.shape:
@@ -42,16 +47,33 @@ def predict_logits(
                     "Forward adapter must return one logit per label; "
                     f"got logits {tuple(logits.shape)} and labels {tuple(labels.shape)}."
                 )
-            if not torch.isfinite(logits).all():
-                raise FloatingPointError("Model produced non-finite evaluation logits.")
-            if not torch.isfinite(labels).all():
-                raise ValueError("Evaluation labels contain non-finite values.")
-            collected_labels.append(labels.detach().cpu())
-            collected_logits.append(logits.detach().cpu())
+            finite_logits = torch.isfinite(logits).all()
+            finite_labels = torch.isfinite(labels).all()
+            if logits.device.type == "cuda" and hasattr(torch, "_assert_async"):
+                torch._assert_async(
+                    finite_logits,
+                    "Model produced non-finite evaluation logits.",
+                )
+                torch._assert_async(
+                    finite_labels,
+                    "Evaluation labels contain non-finite values.",
+                )
+            else:
+                if not finite_logits:
+                    raise FloatingPointError(
+                        "Model produced non-finite evaluation logits."
+                    )
+                if not finite_labels:
+                    raise ValueError("Evaluation labels contain non-finite values.")
+            collected_labels.append(labels.detach())
+            collected_logits.append(logits.detach())
 
     if not collected_labels:
         raise ValueError("Evaluation loader produced no samples.")
-    return torch.cat(collected_labels), torch.cat(collected_logits)
+    return (
+        torch.cat(collected_labels).cpu(),
+        torch.cat(collected_logits).cpu(),
+    )
 
 
 def compute_mortality_metrics(

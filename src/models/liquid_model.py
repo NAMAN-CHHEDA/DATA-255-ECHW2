@@ -105,8 +105,15 @@ class LiquidRiskModel(nn.Module):
         mask: torch.Tensor,
         delta_t: torch.Tensor,
         valid_time_mask: torch.Tensor,
+        times: torch.Tensor | None = None,
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
-        """Create value-mask features and one clamped timespan per timestep."""
+        """Create value-mask features and one clamped timespan per timestep.
+
+        With ``times`` the timespan is the real inter-step gap
+        ``times[t] - times[t-1]`` (the first step uses the clamp minimum as
+        its epsilon). Without it (smoke tests only) the legacy mean per-variable
+        ``delta_t`` is used.
+        """
         self._validate_inputs(values, mask, delta_t, valid_time_mask)
         parameter = next(self.recurrent.parameters())
         values = values.to(device=parameter.device, dtype=parameter.dtype)
@@ -114,7 +121,13 @@ class LiquidRiskModel(nn.Module):
         delta_t = delta_t.to(device=parameter.device, dtype=parameter.dtype)
         valid = valid_time_mask.to(device=parameter.device, dtype=torch.bool)
         features = torch.cat([values, mask], dim=-1)
-        raw_timespans = delta_t.mean(dim=-1)
+        if times is None:
+            raw_timespans = delta_t.mean(dim=-1)
+        else:
+            times = times.to(device=parameter.device, dtype=parameter.dtype)
+            raw_timespans = torch.zeros_like(times)
+            raw_timespans[:, 1:] = times[:, 1:] - times[:, :-1]
+            raw_timespans[:, 0] = self.timespan_min
         if torch.any(~torch.isfinite(raw_timespans[valid])):
             raise ValueError("Valid mean delta_t timespans must be finite.")
         timespans = raw_timespans.clamp(
@@ -184,6 +197,7 @@ class LiquidRiskModel(nn.Module):
         mask: torch.Tensor,
         delta_t: torch.Tensor,
         valid_time_mask: torch.Tensor,
+        times: torch.Tensor | None = None,
     ) -> tuple[torch.Tensor, torch.Tensor]:
         """Return padded trajectories and final valid logits."""
         features, timespans, valid = self._prepare_inputs(
@@ -191,6 +205,7 @@ class LiquidRiskModel(nn.Module):
             mask,
             delta_t,
             valid_time_mask,
+            times,
         )
         if self.batch_mode == "per_sample_compat":
             return self._forward_per_sample(features, timespans, valid)
@@ -202,6 +217,7 @@ class LiquidRiskModel(nn.Module):
         mask: torch.Tensor,
         delta_t: torch.Tensor,
         valid_time_mask: torch.Tensor,
+        times: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """Return padded unsquashed risk logits shaped ``(B, T_max)``."""
         trajectory, _ = self._forward_outputs(
@@ -209,6 +225,7 @@ class LiquidRiskModel(nn.Module):
             mask,
             delta_t,
             valid_time_mask,
+            times,
         )
         return trajectory
 
@@ -218,6 +235,7 @@ class LiquidRiskModel(nn.Module):
         mask: torch.Tensor,
         delta_t: torch.Tensor,
         valid_time_mask: torch.Tensor,
+        times: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """Return each patient's final valid unsquashed logit shaped ``(B,)``."""
         _, final_logits = self._forward_outputs(
@@ -225,6 +243,7 @@ class LiquidRiskModel(nn.Module):
             mask,
             delta_t,
             valid_time_mask,
+            times,
         )
         return final_logits
 

@@ -54,6 +54,16 @@ VAL_RATIO = 0.15
 TEST_RATIO = 0.15
 
 BATCH_SIZE = 32
+# Evaluation (validation/test/zero-shot) batch size for models whose outputs do
+# not depend on batch composition. The ODE models share one adaptive step size
+# across the batch, so their outputs change slightly with batch size; they keep
+# BATCH_SIZE so results stay identical to the saved Experiment 1 numbers.
+EVAL_BATCH_SIZE = 256
+EVAL_BATCH_INVARIANT_MODELS = ("gru_baseline", "ltc", "cfc")
+# Cheaper protocol for Experiment 2 retraining and Experiment 4.
+REDUCED_MAX_EPOCHS = 25
+# Default wall-clock cap per training run (minutes); 0 disables.
+DEFAULT_MAX_RUN_MINUTES = 20.0
 LEARNING_RATE = 1e-3
 WEIGHT_DECAY = 1e-4
 EPOCHS = 50
@@ -73,8 +83,14 @@ DROPOUT = 0.1
 ODE_SOLVER = "dopri5"
 ODE_RTOL = 1e-3
 ODE_ATOL = 1e-4
+# Fail fast instead of hanging if the adaptive solver runs away. Does not
+# change outputs unless the limit is hit (then torchdiffeq raises).
+ODE_MAX_NUM_STEPS = 20000
 KAN_GRID = 5
 KAN_SPLINE_ORDER = 3
+# Spline grid support for the KAN vector field. Runaway fallback is
+# (-3.0, 3.0). Overridable with --kan-grid-range.
+KAN_GRID_RANGE = (-1.0, 1.0)
 KAN_HIDDEN_WIDTH_MULTIPLIER = 2
 LIQUID_UNITS = 32
 LIQUID_ODE_UNFOLDS = 6
@@ -129,6 +145,10 @@ def validate_config() -> None:
         raise ValueError("Part B model dimensions must be positive.")
     if ODE_RTOL <= 0 or ODE_ATOL <= 0:
         raise ValueError("ODE_RTOL and ODE_ATOL must be positive.")
+    if ODE_MAX_NUM_STEPS < 1:
+        raise ValueError("ODE_MAX_NUM_STEPS must be at least 1.")
+    if not KAN_GRID_RANGE[0] < KAN_GRID_RANGE[1]:
+        raise ValueError("KAN_GRID_RANGE must satisfy low < high.")
     if min(KAN_GRID, KAN_SPLINE_ORDER, KAN_HIDDEN_WIDTH_MULTIPLIER) < 1:
         raise ValueError("KAN grid, spline order, and width multiplier must be positive.")
     if LIQUID_UNITS < 1 or LIQUID_ODE_UNFOLDS < 1:
@@ -149,6 +169,13 @@ def validate_config() -> None:
         raise ValueError("KAN candidate width multipliers must be positive.")
     if any(value < 1 for value in KAN_CANDIDATE_GRIDS):
         raise ValueError("KAN candidate grid sizes must be positive.")
+
+
+def eval_batch_size(model_key: str | None) -> int:
+    """Evaluation batch size: 256 where outputs are batch-invariant, else 32."""
+    if model_key in EVAL_BATCH_INVARIANT_MODELS:
+        return EVAL_BATCH_SIZE
+    return BATCH_SIZE
 
 
 def resolve_device(preference: str | None = None) -> str:
@@ -217,7 +244,9 @@ def format_config(device: str) -> str:
         f"Dropout: {DROPOUT}",
         f"ODE solver name: {ODE_SOLVER}",
         f"ODE rtol / atol: {ODE_RTOL} / {ODE_ATOL}",
+        f"ODE max steps: {ODE_MAX_NUM_STEPS}",
         f"KAN grid / spline order: {KAN_GRID} / {KAN_SPLINE_ORDER}",
+        f"KAN grid range: {KAN_GRID_RANGE}",
         (
             "KAN hidden width formula: "
             f"{KAN_HIDDEN_WIDTH_MULTIPLIER} * hidden_dim + 1"

@@ -1,0 +1,608 @@
+
+===== run started 2026-10-06T07:26:41.202230+00:00 argv=['--run', '--family', 'mlp', '--hidden-dim', '8'] =====
+KAN capacity match (hidden_dim=8): MLP-ODE=5,633 params; KAN width=39, grid=3, k=3 -> 5,617 params (-16, -0.28%)
+KAN capacity match (hidden_dim=20): MLP-ODE=7,649 params; KAN width=21, grid=3, k=3 -> 7,669 params (+20, +0.26%)
+KAN capacity match (hidden_dim=40): MLP-ODE=11,009 params; KAN width=13, grid=4, k=3 -> 11,038 params (+29, +0.26%)
+Materialized datasets in 17.24s.
+Model 1/1: mlp_h8
+Device: cuda
+Trainable parameters: 5,633
+Training settings: max_epochs=25, min_epochs=5, monitor=validation AUPRC, patience=4, min_delta=0, checkpoint_every=5
+mlp_h8 epoch 1 batch 10/88 | elapsed=2.3s | fwd_nfe=50 | bwd_nfe=92 | max|h|=43.9
+mlp_h8 epoch 1 batch 20/88 | elapsed=4.0s | fwd_nfe=50 | bwd_nfe=86 | max|h|=34.6
+mlp_h8 epoch 1 batch 30/88 | elapsed=5.8s | fwd_nfe=50 | bwd_nfe=98 | max|h|=36.7
+mlp_h8 epoch 1 batch 40/88 | elapsed=7.5s | fwd_nfe=56 | bwd_nfe=86 | max|h|=31.9
+mlp_h8 epoch 1 batch 50/88 | elapsed=9.3s | fwd_nfe=50 | bwd_nfe=86 | max|h|=36.4
+mlp_h8 epoch 1 batch 60/88 | elapsed=11.1s | fwd_nfe=50 | bwd_nfe=80 | max|h|=31.6
+mlp_h8 epoch 1 batch 70/88 | elapsed=12.9s | fwd_nfe=68 | bwd_nfe=74 | max|h|=27.3
+mlp_h8 epoch 1 batch 80/88 | elapsed=14.7s | fwd_nfe=50 | bwd_nfe=74 | max|h|=36.8
+Validation AUPRC improved for mlp_h8: 0.172086 at epoch 1.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 1/25 | train_loss=0.620570 | val_AUROC=0.547936 | val_AUPRC=0.172086 | best_AUPRC=0.172086 | best_epoch=1 | patience=0/4 | train_time=16.11s | val_time=0.83s | epoch_time=16.95s | model_time=16.95s | gpu_peak=19.9 MiB
+mlp_h8 epoch 2 batch 10/88 | elapsed=1.7s | fwd_nfe=50 | bwd_nfe=80 | max|h|=41
+mlp_h8 epoch 2 batch 20/88 | elapsed=3.6s | fwd_nfe=50 | bwd_nfe=80 | max|h|=40
+mlp_h8 epoch 2 batch 30/88 | elapsed=5.5s | fwd_nfe=56 | bwd_nfe=80 | max|h|=38.1
+mlp_h8 epoch 2 batch 40/88 | elapsed=7.4s | fwd_nfe=56 | bwd_nfe=92 | max|h|=37.3
+mlp_h8 epoch 2 batch 50/88 | elapsed=9.4s | fwd_nfe=56 | bwd_nfe=92 | max|h|=35.1
+mlp_h8 epoch 2 batch 60/88 | elapsed=11.3s | fwd_nfe=56 | bwd_nfe=92 | max|h|=31.9
+mlp_h8 epoch 2 batch 70/88 | elapsed=13.2s | fwd_nfe=56 | bwd_nfe=86 | max|h|=31.7
+mlp_h8 epoch 2 batch 80/88 | elapsed=15.0s | fwd_nfe=50 | bwd_nfe=80 | max|h|=27.9
+Validation AUPRC improved for mlp_h8: 0.352165 at epoch 2.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 2/25 | train_loss=0.417864 | val_AUROC=0.755417 | val_AUPRC=0.352165 | best_AUPRC=0.352165 | best_epoch=2 | patience=0/4 | train_time=16.39s | val_time=0.82s | epoch_time=17.21s | model_time=34.18s | gpu_peak=19.9 MiB
+mlp_h8 epoch 3 batch 10/88 | elapsed=1.8s | fwd_nfe=50 | bwd_nfe=74 | max|h|=29.5
+mlp_h8 epoch 3 batch 20/88 | elapsed=3.6s | fwd_nfe=62 | bwd_nfe=86 | max|h|=30.8
+mlp_h8 epoch 3 batch 30/88 | elapsed=5.5s | fwd_nfe=56 | bwd_nfe=80 | max|h|=30.3
+mlp_h8 epoch 3 batch 40/88 | elapsed=7.3s | fwd_nfe=56 | bwd_nfe=86 | max|h|=33.6
+mlp_h8 epoch 3 batch 50/88 | elapsed=9.2s | fwd_nfe=56 | bwd_nfe=74 | max|h|=37.2
+mlp_h8 epoch 3 batch 60/88 | elapsed=11.1s | fwd_nfe=56 | bwd_nfe=92 | max|h|=36.3
+mlp_h8 epoch 3 batch 70/88 | elapsed=13.1s | fwd_nfe=56 | bwd_nfe=92 | max|h|=35
+mlp_h8 epoch 3 batch 80/88 | elapsed=15.2s | fwd_nfe=62 | bwd_nfe=98 | max|h|=33.4
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 3/25 | train_loss=0.416885 | val_AUROC=0.746708 | val_AUPRC=0.319800 | best_AUPRC=0.352165 | best_epoch=2 | patience=1/4 | train_time=16.70s | val_time=0.92s | epoch_time=17.62s | model_time=51.81s | gpu_peak=19.9 MiB
+mlp_h8 epoch 4 batch 10/88 | elapsed=1.9s | fwd_nfe=56 | bwd_nfe=80 | max|h|=35.5
+mlp_h8 epoch 4 batch 20/88 | elapsed=3.9s | fwd_nfe=56 | bwd_nfe=86 | max|h|=34.6
+mlp_h8 epoch 4 batch 30/88 | elapsed=6.0s | fwd_nfe=56 | bwd_nfe=92 | max|h|=38.9
+mlp_h8 epoch 4 batch 40/88 | elapsed=7.8s | fwd_nfe=56 | bwd_nfe=74 | max|h|=38.2
+mlp_h8 epoch 4 batch 50/88 | elapsed=9.7s | fwd_nfe=56 | bwd_nfe=74 | max|h|=37.9
+mlp_h8 epoch 4 batch 60/88 | elapsed=11.6s | fwd_nfe=56 | bwd_nfe=86 | max|h|=35.8
+mlp_h8 epoch 4 batch 70/88 | elapsed=13.5s | fwd_nfe=56 | bwd_nfe=74 | max|h|=36.2
+mlp_h8 epoch 4 batch 80/88 | elapsed=15.4s | fwd_nfe=56 | bwd_nfe=80 | max|h|=36
+Validation AUPRC improved for mlp_h8: 0.367725 at epoch 4.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 4/25 | train_loss=0.424478 | val_AUROC=0.782035 | val_AUPRC=0.367725 | best_AUPRC=0.367725 | best_epoch=4 | patience=0/4 | train_time=16.94s | val_time=0.91s | epoch_time=17.85s | model_time=69.67s | gpu_peak=19.9 MiB
+mlp_h8 epoch 5 batch 10/88 | elapsed=2.0s | fwd_nfe=56 | bwd_nfe=92 | max|h|=31.6
+mlp_h8 epoch 5 batch 20/88 | elapsed=4.0s | fwd_nfe=56 | bwd_nfe=92 | max|h|=31.6
+mlp_h8 epoch 5 batch 30/88 | elapsed=6.0s | fwd_nfe=56 | bwd_nfe=86 | max|h|=33.1
+mlp_h8 epoch 5 batch 40/88 | elapsed=7.9s | fwd_nfe=56 | bwd_nfe=80 | max|h|=32.1
+mlp_h8 epoch 5 batch 50/88 | elapsed=9.8s | fwd_nfe=56 | bwd_nfe=92 | max|h|=32.1
+mlp_h8 epoch 5 batch 60/88 | elapsed=11.8s | fwd_nfe=62 | bwd_nfe=92 | max|h|=30.5
+mlp_h8 epoch 5 batch 70/88 | elapsed=13.8s | fwd_nfe=62 | bwd_nfe=92 | max|h|=33.3
+mlp_h8 epoch 5 batch 80/88 | elapsed=15.8s | fwd_nfe=62 | bwd_nfe=92 | max|h|=50.5
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\epoch_005.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 5/25 | train_loss=0.382065 | val_AUROC=0.769823 | val_AUPRC=0.355580 | best_AUPRC=0.367725 | best_epoch=4 | patience=1/4 | train_time=17.37s | val_time=0.97s | epoch_time=18.34s | model_time=88.02s | gpu_peak=19.9 MiB
+mlp_h8 epoch 6 batch 10/88 | elapsed=1.9s | fwd_nfe=62 | bwd_nfe=80 | max|h|=37.5
+mlp_h8 epoch 6 batch 20/88 | elapsed=3.8s | fwd_nfe=62 | bwd_nfe=92 | max|h|=43.1
+mlp_h8 epoch 6 batch 30/88 | elapsed=5.8s | fwd_nfe=62 | bwd_nfe=92 | max|h|=48.8
+mlp_h8 epoch 6 batch 40/88 | elapsed=7.8s | fwd_nfe=62 | bwd_nfe=98 | max|h|=44.4
+mlp_h8 epoch 6 batch 50/88 | elapsed=9.8s | fwd_nfe=56 | bwd_nfe=86 | max|h|=43.1
+mlp_h8 epoch 6 batch 60/88 | elapsed=11.7s | fwd_nfe=56 | bwd_nfe=80 | max|h|=42.2
+mlp_h8 epoch 6 batch 70/88 | elapsed=13.6s | fwd_nfe=56 | bwd_nfe=86 | max|h|=41.2
+mlp_h8 epoch 6 batch 80/88 | elapsed=15.6s | fwd_nfe=62 | bwd_nfe=86 | max|h|=36
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 6/25 | train_loss=0.369303 | val_AUROC=0.767465 | val_AUPRC=0.358895 | best_AUPRC=0.367725 | best_epoch=4 | patience=2/4 | train_time=17.25s | val_time=0.98s | epoch_time=18.24s | model_time=106.27s | gpu_peak=19.9 MiB
+mlp_h8 epoch 7 batch 10/88 | elapsed=2.0s | fwd_nfe=56 | bwd_nfe=80 | max|h|=37
+mlp_h8 epoch 7 batch 20/88 | elapsed=3.9s | fwd_nfe=56 | bwd_nfe=92 | max|h|=32.2
+mlp_h8 epoch 7 batch 30/88 | elapsed=5.8s | fwd_nfe=56 | bwd_nfe=86 | max|h|=34.3
+mlp_h8 epoch 7 batch 40/88 | elapsed=7.6s | fwd_nfe=56 | bwd_nfe=86 | max|h|=36.8
+mlp_h8 epoch 7 batch 50/88 | elapsed=9.6s | fwd_nfe=62 | bwd_nfe=86 | max|h|=36.7
+mlp_h8 epoch 7 batch 60/88 | elapsed=11.5s | fwd_nfe=56 | bwd_nfe=92 | max|h|=32.6
+mlp_h8 epoch 7 batch 70/88 | elapsed=13.5s | fwd_nfe=56 | bwd_nfe=86 | max|h|=34.3
+mlp_h8 epoch 7 batch 80/88 | elapsed=15.4s | fwd_nfe=62 | bwd_nfe=92 | max|h|=37.7
+Validation AUPRC improved for mlp_h8: 0.383121 at epoch 7.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 7/25 | train_loss=0.363155 | val_AUROC=0.776128 | val_AUPRC=0.383121 | best_AUPRC=0.383121 | best_epoch=7 | patience=0/4 | train_time=17.00s | val_time=1.02s | epoch_time=18.02s | model_time=124.29s | gpu_peak=19.9 MiB
+mlp_h8 epoch 8 batch 10/88 | elapsed=1.9s | fwd_nfe=62 | bwd_nfe=86 | max|h|=39.2
+mlp_h8 epoch 8 batch 20/88 | elapsed=4.0s | fwd_nfe=62 | bwd_nfe=86 | max|h|=40.4
+mlp_h8 epoch 8 batch 30/88 | elapsed=6.0s | fwd_nfe=62 | bwd_nfe=80 | max|h|=41.9
+mlp_h8 epoch 8 batch 40/88 | elapsed=7.9s | fwd_nfe=56 | bwd_nfe=80 | max|h|=34.6
+mlp_h8 epoch 8 batch 50/88 | elapsed=9.9s | fwd_nfe=62 | bwd_nfe=80 | max|h|=29.9
+mlp_h8 epoch 8 batch 60/88 | elapsed=11.8s | fwd_nfe=62 | bwd_nfe=80 | max|h|=29.3
+mlp_h8 epoch 8 batch 70/88 | elapsed=13.8s | fwd_nfe=62 | bwd_nfe=86 | max|h|=34.8
+mlp_h8 epoch 8 batch 80/88 | elapsed=15.7s | fwd_nfe=62 | bwd_nfe=86 | max|h|=39
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 8/25 | train_loss=0.391382 | val_AUROC=0.741874 | val_AUPRC=0.358782 | best_AUPRC=0.383121 | best_epoch=7 | patience=1/4 | train_time=17.19s | val_time=0.92s | epoch_time=18.11s | model_time=142.41s | gpu_peak=19.9 MiB
+mlp_h8 epoch 9 batch 10/88 | elapsed=1.8s | fwd_nfe=56 | bwd_nfe=80 | max|h|=32.6
+mlp_h8 epoch 9 batch 20/88 | elapsed=3.7s | fwd_nfe=62 | bwd_nfe=80 | max|h|=39.4
+mlp_h8 epoch 9 batch 30/88 | elapsed=5.5s | fwd_nfe=56 | bwd_nfe=80 | max|h|=50.9
+mlp_h8 epoch 9 batch 40/88 | elapsed=7.4s | fwd_nfe=56 | bwd_nfe=80 | max|h|=50.6
+mlp_h8 epoch 9 batch 50/88 | elapsed=9.3s | fwd_nfe=62 | bwd_nfe=80 | max|h|=52.5
+mlp_h8 epoch 9 batch 60/88 | elapsed=11.1s | fwd_nfe=56 | bwd_nfe=86 | max|h|=46.4
+mlp_h8 epoch 9 batch 70/88 | elapsed=13.0s | fwd_nfe=50 | bwd_nfe=80 | max|h|=41.5
+mlp_h8 epoch 9 batch 80/88 | elapsed=14.8s | fwd_nfe=56 | bwd_nfe=74 | max|h|=34.1
+Validation AUPRC improved for mlp_h8: 0.395245 at epoch 9.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 9/25 | train_loss=0.399155 | val_AUROC=0.791375 | val_AUPRC=0.395245 | best_AUPRC=0.395245 | best_epoch=9 | patience=0/4 | train_time=16.28s | val_time=0.86s | epoch_time=17.14s | model_time=159.56s | gpu_peak=19.9 MiB
+mlp_h8 epoch 10 batch 10/88 | elapsed=2.0s | fwd_nfe=50 | bwd_nfe=80 | max|h|=34.5
+mlp_h8 epoch 10 batch 20/88 | elapsed=3.9s | fwd_nfe=56 | bwd_nfe=86 | max|h|=34.9
+mlp_h8 epoch 10 batch 30/88 | elapsed=5.9s | fwd_nfe=56 | bwd_nfe=92 | max|h|=39.5
+mlp_h8 epoch 10 batch 40/88 | elapsed=7.9s | fwd_nfe=56 | bwd_nfe=92 | max|h|=38.7
+mlp_h8 epoch 10 batch 50/88 | elapsed=9.6s | fwd_nfe=56 | bwd_nfe=68 | max|h|=37.7
+mlp_h8 epoch 10 batch 60/88 | elapsed=11.6s | fwd_nfe=56 | bwd_nfe=92 | max|h|=38.1
+mlp_h8 epoch 10 batch 70/88 | elapsed=13.6s | fwd_nfe=56 | bwd_nfe=86 | max|h|=37.1
+mlp_h8 epoch 10 batch 80/88 | elapsed=15.6s | fwd_nfe=56 | bwd_nfe=98 | max|h|=47.3
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\epoch_010.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 10/25 | train_loss=0.378858 | val_AUROC=0.604838 | val_AUPRC=0.313775 | best_AUPRC=0.395245 | best_epoch=9 | patience=1/4 | train_time=17.18s | val_time=0.94s | epoch_time=18.12s | model_time=177.70s | gpu_peak=19.9 MiB
+mlp_h8 epoch 11 batch 10/88 | elapsed=1.9s | fwd_nfe=56 | bwd_nfe=74 | max|h|=45.4
+mlp_h8 epoch 11 batch 20/88 | elapsed=3.8s | fwd_nfe=56 | bwd_nfe=92 | max|h|=50.7
+mlp_h8 epoch 11 batch 30/88 | elapsed=5.7s | fwd_nfe=56 | bwd_nfe=80 | max|h|=50.6
+mlp_h8 epoch 11 batch 40/88 | elapsed=7.6s | fwd_nfe=56 | bwd_nfe=74 | max|h|=46.4
+mlp_h8 epoch 11 batch 50/88 | elapsed=9.5s | fwd_nfe=56 | bwd_nfe=86 | max|h|=46
+mlp_h8 epoch 11 batch 60/88 | elapsed=11.4s | fwd_nfe=62 | bwd_nfe=80 | max|h|=44.2
+mlp_h8 epoch 11 batch 70/88 | elapsed=13.3s | fwd_nfe=56 | bwd_nfe=68 | max|h|=40
+mlp_h8 epoch 11 batch 80/88 | elapsed=15.2s | fwd_nfe=62 | bwd_nfe=86 | max|h|=40.7
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 11/25 | train_loss=0.377420 | val_AUROC=0.682264 | val_AUPRC=0.339390 | best_AUPRC=0.395245 | best_epoch=9 | patience=2/4 | train_time=16.86s | val_time=1.00s | epoch_time=17.87s | model_time=195.57s | gpu_peak=19.9 MiB
+mlp_h8 epoch 12 batch 10/88 | elapsed=2.0s | fwd_nfe=62 | bwd_nfe=74 | max|h|=38.4
+mlp_h8 epoch 12 batch 20/88 | elapsed=4.1s | fwd_nfe=62 | bwd_nfe=86 | max|h|=39.6
+mlp_h8 epoch 12 batch 30/88 | elapsed=6.0s | fwd_nfe=62 | bwd_nfe=74 | max|h|=39.2
+mlp_h8 epoch 12 batch 40/88 | elapsed=7.9s | fwd_nfe=62 | bwd_nfe=74 | max|h|=42
+mlp_h8 epoch 12 batch 50/88 | elapsed=9.7s | fwd_nfe=62 | bwd_nfe=80 | max|h|=44.8
+mlp_h8 epoch 12 batch 60/88 | elapsed=11.5s | fwd_nfe=62 | bwd_nfe=74 | max|h|=44.9
+mlp_h8 epoch 12 batch 70/88 | elapsed=13.2s | fwd_nfe=62 | bwd_nfe=74 | max|h|=44.1
+mlp_h8 epoch 12 batch 80/88 | elapsed=15.0s | fwd_nfe=62 | bwd_nfe=74 | max|h|=44.3
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 12/25 | train_loss=0.384420 | val_AUROC=0.530424 | val_AUPRC=0.292673 | best_AUPRC=0.395245 | best_epoch=9 | patience=3/4 | train_time=16.52s | val_time=0.99s | epoch_time=17.51s | model_time=213.09s | gpu_peak=19.9 MiB
+mlp_h8 epoch 13 batch 10/88 | elapsed=1.9s | fwd_nfe=62 | bwd_nfe=74 | max|h|=44
+mlp_h8 epoch 13 batch 20/88 | elapsed=3.8s | fwd_nfe=62 | bwd_nfe=80 | max|h|=45
+mlp_h8 epoch 13 batch 30/88 | elapsed=5.6s | fwd_nfe=62 | bwd_nfe=68 | max|h|=44.2
+mlp_h8 epoch 13 batch 40/88 | elapsed=7.4s | fwd_nfe=56 | bwd_nfe=56 | max|h|=43.4
+mlp_h8 epoch 13 batch 50/88 | elapsed=9.2s | fwd_nfe=62 | bwd_nfe=80 | max|h|=44.5
+mlp_h8 epoch 13 batch 60/88 | elapsed=11.1s | fwd_nfe=62 | bwd_nfe=68 | max|h|=42.7
+mlp_h8 epoch 13 batch 70/88 | elapsed=12.9s | fwd_nfe=62 | bwd_nfe=74 | max|h|=42.1
+mlp_h8 epoch 13 batch 80/88 | elapsed=14.7s | fwd_nfe=68 | bwd_nfe=68 | max|h|=40.6
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h8\latest.pt
+mlp_h8 | epoch 13/25 | train_loss=0.400951 | val_AUROC=0.718619 | val_AUPRC=0.356283 | best_AUPRC=0.395245 | best_epoch=9 | patience=4/4 | train_time=16.12s | val_time=1.12s | epoch_time=17.24s | model_time=230.34s | gpu_peak=19.9 MiB
+Early stopping activated for mlp_h8 at epoch 13: validation AUPRC did not improve by at least 0 for 4 epochs.
+Best checkpoint restored for mlp_h8: epoch 9, validation AUPRC=0.395245.
+Test evaluation begins for mlp_h8.
+Run saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\runs\mlp_h8.json
+
+===== run started 2026-10-06T07:30:56.406513+00:00 argv=['--run', '--family', 'mlp', '--hidden-dim', '20'] =====
+Imported mlp_h20 from Experiment 1: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\runs\mlp_h20.json
+
+===== run started 2026-10-06T07:31:01.647312+00:00 argv=['--run', '--family', 'mlp', '--hidden-dim', '40'] =====
+Materialized datasets in 19.91s.
+Model 1/1: mlp_h40
+Device: cuda
+Trainable parameters: 11,009
+Training settings: max_epochs=25, min_epochs=5, monitor=validation AUPRC, patience=4, min_delta=0, checkpoint_every=5
+mlp_h40 epoch 1 batch 10/88 | elapsed=2.0s | fwd_nfe=50 | bwd_nfe=74 | max|h|=33.3
+mlp_h40 epoch 1 batch 20/88 | elapsed=3.6s | fwd_nfe=50 | bwd_nfe=80 | max|h|=36.9
+mlp_h40 epoch 1 batch 30/88 | elapsed=5.2s | fwd_nfe=50 | bwd_nfe=80 | max|h|=30.3
+mlp_h40 epoch 1 batch 40/88 | elapsed=6.8s | fwd_nfe=50 | bwd_nfe=74 | max|h|=28.3
+mlp_h40 epoch 1 batch 50/88 | elapsed=8.4s | fwd_nfe=50 | bwd_nfe=74 | max|h|=31.3
+mlp_h40 epoch 1 batch 60/88 | elapsed=10.1s | fwd_nfe=50 | bwd_nfe=74 | max|h|=31
+mlp_h40 epoch 1 batch 70/88 | elapsed=11.7s | fwd_nfe=50 | bwd_nfe=74 | max|h|=25.3
+mlp_h40 epoch 1 batch 80/88 | elapsed=13.4s | fwd_nfe=56 | bwd_nfe=74 | max|h|=25.7
+Validation AUPRC improved for mlp_h40: 0.287534 at epoch 1.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 1/25 | train_loss=0.580088 | val_AUROC=0.680676 | val_AUPRC=0.287534 | best_AUPRC=0.287534 | best_epoch=1 | patience=0/4 | train_time=14.83s | val_time=0.91s | epoch_time=15.75s | model_time=15.75s | gpu_peak=21.2 MiB
+mlp_h40 epoch 2 batch 10/88 | elapsed=1.7s | fwd_nfe=56 | bwd_nfe=74 | max|h|=29.9
+mlp_h40 epoch 2 batch 20/88 | elapsed=3.4s | fwd_nfe=56 | bwd_nfe=74 | max|h|=29.9
+mlp_h40 epoch 2 batch 30/88 | elapsed=5.2s | fwd_nfe=56 | bwd_nfe=74 | max|h|=28.2
+mlp_h40 epoch 2 batch 40/88 | elapsed=6.9s | fwd_nfe=56 | bwd_nfe=68 | max|h|=26
+mlp_h40 epoch 2 batch 50/88 | elapsed=8.6s | fwd_nfe=56 | bwd_nfe=74 | max|h|=25.2
+mlp_h40 epoch 2 batch 60/88 | elapsed=10.4s | fwd_nfe=56 | bwd_nfe=80 | max|h|=21.8
+mlp_h40 epoch 2 batch 70/88 | elapsed=12.3s | fwd_nfe=62 | bwd_nfe=80 | max|h|=24.3
+mlp_h40 epoch 2 batch 80/88 | elapsed=14.1s | fwd_nfe=62 | bwd_nfe=80 | max|h|=22.1
+Validation AUPRC improved for mlp_h40: 0.297215 at epoch 2.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 2/25 | train_loss=0.438380 | val_AUROC=0.692561 | val_AUPRC=0.297215 | best_AUPRC=0.297215 | best_epoch=2 | patience=0/4 | train_time=15.70s | val_time=0.99s | epoch_time=16.69s | model_time=32.46s | gpu_peak=21.2 MiB
+mlp_h40 epoch 3 batch 10/88 | elapsed=2.1s | fwd_nfe=62 | bwd_nfe=92 | max|h|=23.7
+mlp_h40 epoch 3 batch 20/88 | elapsed=4.2s | fwd_nfe=68 | bwd_nfe=92 | max|h|=27.4
+mlp_h40 epoch 3 batch 30/88 | elapsed=6.2s | fwd_nfe=62 | bwd_nfe=80 | max|h|=24.9
+mlp_h40 epoch 3 batch 40/88 | elapsed=8.1s | fwd_nfe=68 | bwd_nfe=80 | max|h|=18.8
+mlp_h40 epoch 3 batch 50/88 | elapsed=10.2s | fwd_nfe=74 | bwd_nfe=104 | max|h|=16.8
+mlp_h40 epoch 3 batch 60/88 | elapsed=12.5s | fwd_nfe=74 | bwd_nfe=104 | max|h|=18.1
+mlp_h40 epoch 3 batch 70/88 | elapsed=14.8s | fwd_nfe=68 | bwd_nfe=92 | max|h|=20.5
+mlp_h40 epoch 3 batch 80/88 | elapsed=16.9s | fwd_nfe=68 | bwd_nfe=92 | max|h|=22.3
+Validation AUPRC improved for mlp_h40: 0.360843 at epoch 3.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 3/25 | train_loss=0.415918 | val_AUROC=0.751354 | val_AUPRC=0.360843 | best_AUPRC=0.360843 | best_epoch=3 | patience=0/4 | train_time=18.62s | val_time=1.09s | epoch_time=19.70s | model_time=52.18s | gpu_peak=21.2 MiB
+mlp_h40 epoch 4 batch 10/88 | elapsed=2.2s | fwd_nfe=68 | bwd_nfe=92 | max|h|=27.4
+mlp_h40 epoch 4 batch 20/88 | elapsed=4.6s | fwd_nfe=68 | bwd_nfe=104 | max|h|=28.6
+mlp_h40 epoch 4 batch 30/88 | elapsed=6.9s | fwd_nfe=74 | bwd_nfe=116 | max|h|=27.5
+mlp_h40 epoch 4 batch 40/88 | elapsed=9.4s | fwd_nfe=74 | bwd_nfe=104 | max|h|=27.6
+mlp_h40 epoch 4 batch 50/88 | elapsed=11.6s | fwd_nfe=74 | bwd_nfe=98 | max|h|=23.1
+mlp_h40 epoch 4 batch 60/88 | elapsed=13.9s | fwd_nfe=74 | bwd_nfe=98 | max|h|=19.9
+mlp_h40 epoch 4 batch 70/88 | elapsed=16.1s | fwd_nfe=74 | bwd_nfe=98 | max|h|=21.8
+mlp_h40 epoch 4 batch 80/88 | elapsed=18.4s | fwd_nfe=74 | bwd_nfe=104 | max|h|=18.7
+Validation AUPRC improved for mlp_h40: 0.401362 at epoch 4.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 4/25 | train_loss=0.420138 | val_AUROC=0.786121 | val_AUPRC=0.401362 | best_AUPRC=0.401362 | best_epoch=4 | patience=0/4 | train_time=20.27s | val_time=1.13s | epoch_time=21.39s | model_time=73.58s | gpu_peak=21.2 MiB
+mlp_h40 epoch 5 batch 10/88 | elapsed=2.3s | fwd_nfe=68 | bwd_nfe=98 | max|h|=21.1
+mlp_h40 epoch 5 batch 20/88 | elapsed=4.6s | fwd_nfe=74 | bwd_nfe=104 | max|h|=18.5
+mlp_h40 epoch 5 batch 30/88 | elapsed=7.0s | fwd_nfe=74 | bwd_nfe=110 | max|h|=17.6
+mlp_h40 epoch 5 batch 40/88 | elapsed=9.4s | fwd_nfe=74 | bwd_nfe=104 | max|h|=16.7
+mlp_h40 epoch 5 batch 50/88 | elapsed=11.8s | fwd_nfe=74 | bwd_nfe=104 | max|h|=17.7
+mlp_h40 epoch 5 batch 60/88 | elapsed=14.0s | fwd_nfe=74 | bwd_nfe=104 | max|h|=20.8
+mlp_h40 epoch 5 batch 70/88 | elapsed=16.4s | fwd_nfe=74 | bwd_nfe=98 | max|h|=19.9
+mlp_h40 epoch 5 batch 80/88 | elapsed=18.6s | fwd_nfe=68 | bwd_nfe=98 | max|h|=16.6
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\epoch_005.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 5/25 | train_loss=0.411167 | val_AUROC=0.749603 | val_AUPRC=0.358807 | best_AUPRC=0.401362 | best_epoch=4 | patience=1/4 | train_time=20.49s | val_time=1.14s | epoch_time=21.63s | model_time=95.22s | gpu_peak=21.2 MiB
+mlp_h40 epoch 6 batch 10/88 | elapsed=2.5s | fwd_nfe=80 | bwd_nfe=116 | max|h|=13.9
+mlp_h40 epoch 6 batch 20/88 | elapsed=4.7s | fwd_nfe=68 | bwd_nfe=92 | max|h|=25.8
+mlp_h40 epoch 6 batch 30/88 | elapsed=6.9s | fwd_nfe=62 | bwd_nfe=98 | max|h|=39.6
+mlp_h40 epoch 6 batch 40/88 | elapsed=9.0s | fwd_nfe=68 | bwd_nfe=98 | max|h|=39.9
+mlp_h40 epoch 6 batch 50/88 | elapsed=11.2s | fwd_nfe=74 | bwd_nfe=98 | max|h|=31.8
+mlp_h40 epoch 6 batch 60/88 | elapsed=13.4s | fwd_nfe=68 | bwd_nfe=98 | max|h|=20.7
+mlp_h40 epoch 6 batch 70/88 | elapsed=15.7s | fwd_nfe=68 | bwd_nfe=104 | max|h|=26
+mlp_h40 epoch 6 batch 80/88 | elapsed=17.9s | fwd_nfe=68 | bwd_nfe=98 | max|h|=28.5
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 6/25 | train_loss=0.397515 | val_AUROC=0.773559 | val_AUPRC=0.400598 | best_AUPRC=0.401362 | best_epoch=4 | patience=2/4 | train_time=19.62s | val_time=1.07s | epoch_time=20.69s | model_time=115.93s | gpu_peak=21.2 MiB
+mlp_h40 epoch 7 batch 10/88 | elapsed=2.2s | fwd_nfe=68 | bwd_nfe=92 | max|h|=24.7
+mlp_h40 epoch 7 batch 20/88 | elapsed=4.3s | fwd_nfe=68 | bwd_nfe=98 | max|h|=25.4
+mlp_h40 epoch 7 batch 30/88 | elapsed=6.5s | fwd_nfe=68 | bwd_nfe=110 | max|h|=23.9
+mlp_h40 epoch 7 batch 40/88 | elapsed=8.8s | fwd_nfe=68 | bwd_nfe=104 | max|h|=27.8
+mlp_h40 epoch 7 batch 50/88 | elapsed=11.2s | fwd_nfe=68 | bwd_nfe=110 | max|h|=24.8
+mlp_h40 epoch 7 batch 60/88 | elapsed=13.5s | fwd_nfe=68 | bwd_nfe=98 | max|h|=21.9
+mlp_h40 epoch 7 batch 70/88 | elapsed=15.7s | fwd_nfe=68 | bwd_nfe=92 | max|h|=19.3
+mlp_h40 epoch 7 batch 80/88 | elapsed=18.0s | fwd_nfe=68 | bwd_nfe=98 | max|h|=18.1
+Validation AUPRC improved for mlp_h40: 0.418917 at epoch 7.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 7/25 | train_loss=0.376888 | val_AUROC=0.794947 | val_AUPRC=0.418917 | best_AUPRC=0.418917 | best_epoch=7 | patience=0/4 | train_time=19.78s | val_time=1.14s | epoch_time=20.92s | model_time=136.85s | gpu_peak=21.2 MiB
+mlp_h40 epoch 8 batch 10/88 | elapsed=2.3s | fwd_nfe=74 | bwd_nfe=110 | max|h|=24.1
+mlp_h40 epoch 8 batch 20/88 | elapsed=4.7s | fwd_nfe=74 | bwd_nfe=110 | max|h|=17.2
+mlp_h40 epoch 8 batch 30/88 | elapsed=7.0s | fwd_nfe=68 | bwd_nfe=98 | max|h|=18.5
+mlp_h40 epoch 8 batch 40/88 | elapsed=9.2s | fwd_nfe=68 | bwd_nfe=98 | max|h|=22.2
+mlp_h40 epoch 8 batch 50/88 | elapsed=11.3s | fwd_nfe=62 | bwd_nfe=86 | max|h|=23.6
+mlp_h40 epoch 8 batch 60/88 | elapsed=13.2s | fwd_nfe=62 | bwd_nfe=86 | max|h|=27.3
+mlp_h40 epoch 8 batch 70/88 | elapsed=15.2s | fwd_nfe=62 | bwd_nfe=86 | max|h|=25.6
+mlp_h40 epoch 8 batch 80/88 | elapsed=17.2s | fwd_nfe=62 | bwd_nfe=86 | max|h|=29.5
+Validation AUPRC improved for mlp_h40: 0.428750 at epoch 8.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 8/25 | train_loss=0.371413 | val_AUROC=0.799967 | val_AUPRC=0.428750 | best_AUPRC=0.428750 | best_epoch=8 | patience=0/4 | train_time=18.69s | val_time=1.00s | epoch_time=19.69s | model_time=156.55s | gpu_peak=21.2 MiB
+mlp_h40 epoch 9 batch 10/88 | elapsed=1.9s | fwd_nfe=62 | bwd_nfe=86 | max|h|=27.9
+mlp_h40 epoch 9 batch 20/88 | elapsed=4.1s | fwd_nfe=68 | bwd_nfe=92 | max|h|=25.7
+mlp_h40 epoch 9 batch 30/88 | elapsed=6.2s | fwd_nfe=68 | bwd_nfe=98 | max|h|=18.9
+mlp_h40 epoch 9 batch 40/88 | elapsed=8.4s | fwd_nfe=74 | bwd_nfe=104 | max|h|=17.9
+mlp_h40 epoch 9 batch 50/88 | elapsed=10.7s | fwd_nfe=74 | bwd_nfe=104 | max|h|=17.8
+mlp_h40 epoch 9 batch 60/88 | elapsed=13.0s | fwd_nfe=74 | bwd_nfe=92 | max|h|=19.4
+mlp_h40 epoch 9 batch 70/88 | elapsed=15.2s | fwd_nfe=68 | bwd_nfe=98 | max|h|=17.7
+mlp_h40 epoch 9 batch 80/88 | elapsed=17.3s | fwd_nfe=68 | bwd_nfe=98 | max|h|=23
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 9/25 | train_loss=0.390043 | val_AUROC=0.775194 | val_AUPRC=0.390168 | best_AUPRC=0.428750 | best_epoch=8 | patience=1/4 | train_time=19.03s | val_time=1.09s | epoch_time=20.12s | model_time=176.69s | gpu_peak=21.2 MiB
+mlp_h40 epoch 10 batch 10/88 | elapsed=2.2s | fwd_nfe=74 | bwd_nfe=98 | max|h|=23.4
+mlp_h40 epoch 10 batch 20/88 | elapsed=4.5s | fwd_nfe=74 | bwd_nfe=104 | max|h|=17.1
+mlp_h40 epoch 10 batch 30/88 | elapsed=6.8s | fwd_nfe=80 | bwd_nfe=104 | max|h|=13.6
+mlp_h40 epoch 10 batch 40/88 | elapsed=9.3s | fwd_nfe=80 | bwd_nfe=110 | max|h|=14.9
+mlp_h40 epoch 10 batch 50/88 | elapsed=11.8s | fwd_nfe=80 | bwd_nfe=116 | max|h|=13.8
+mlp_h40 epoch 10 batch 60/88 | elapsed=14.2s | fwd_nfe=80 | bwd_nfe=110 | max|h|=15.5
+mlp_h40 epoch 10 batch 70/88 | elapsed=16.6s | fwd_nfe=80 | bwd_nfe=104 | max|h|=15.2
+mlp_h40 epoch 10 batch 80/88 | elapsed=19.0s | fwd_nfe=80 | bwd_nfe=104 | max|h|=13
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\epoch_010.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 10/25 | train_loss=0.388746 | val_AUROC=0.748389 | val_AUPRC=0.360403 | best_AUPRC=0.428750 | best_epoch=8 | patience=2/4 | train_time=20.89s | val_time=1.27s | epoch_time=22.16s | model_time=198.85s | gpu_peak=21.2 MiB
+mlp_h40 epoch 11 batch 10/88 | elapsed=2.5s | fwd_nfe=86 | bwd_nfe=122 | max|h|=13.6
+mlp_h40 epoch 11 batch 20/88 | elapsed=5.0s | fwd_nfe=86 | bwd_nfe=122 | max|h|=14.1
+mlp_h40 epoch 11 batch 30/88 | elapsed=7.6s | fwd_nfe=86 | bwd_nfe=122 | max|h|=13.7
+mlp_h40 epoch 11 batch 40/88 | elapsed=10.2s | fwd_nfe=86 | bwd_nfe=110 | max|h|=12.8
+mlp_h40 epoch 11 batch 50/88 | elapsed=12.6s | fwd_nfe=80 | bwd_nfe=110 | max|h|=18.5
+mlp_h40 epoch 11 batch 60/88 | elapsed=14.9s | fwd_nfe=80 | bwd_nfe=98 | max|h|=15.5
+mlp_h40 epoch 11 batch 70/88 | elapsed=17.4s | fwd_nfe=86 | bwd_nfe=116 | max|h|=14.5
+mlp_h40 epoch 11 batch 80/88 | elapsed=20.2s | fwd_nfe=104 | bwd_nfe=128 | max|h|=13.8
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 11/25 | train_loss=0.363120 | val_AUROC=0.787405 | val_AUPRC=0.420063 | best_AUPRC=0.428750 | best_epoch=8 | patience=3/4 | train_time=22.38s | val_time=1.49s | epoch_time=23.86s | model_time=222.73s | gpu_peak=21.2 MiB
+mlp_h40 epoch 12 batch 10/88 | elapsed=2.6s | fwd_nfe=98 | bwd_nfe=104 | max|h|=10
+mlp_h40 epoch 12 batch 20/88 | elapsed=5.1s | fwd_nfe=98 | bwd_nfe=110 | max|h|=13.9
+mlp_h40 epoch 12 batch 30/88 | elapsed=7.6s | fwd_nfe=98 | bwd_nfe=104 | max|h|=10.4
+mlp_h40 epoch 12 batch 40/88 | elapsed=10.2s | fwd_nfe=104 | bwd_nfe=104 | max|h|=10.7
+mlp_h40 epoch 12 batch 50/88 | elapsed=12.9s | fwd_nfe=104 | bwd_nfe=110 | max|h|=10.6
+mlp_h40 epoch 12 batch 60/88 | elapsed=15.6s | fwd_nfe=104 | bwd_nfe=116 | max|h|=14.6
+mlp_h40 epoch 12 batch 70/88 | elapsed=18.3s | fwd_nfe=98 | bwd_nfe=122 | max|h|=16.5
+mlp_h40 epoch 12 batch 80/88 | elapsed=21.0s | fwd_nfe=98 | bwd_nfe=128 | max|h|=16.7
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\mlp_h40\latest.pt
+mlp_h40 | epoch 12/25 | train_loss=0.353763 | val_AUROC=0.780844 | val_AUPRC=0.421455 | best_AUPRC=0.428750 | best_epoch=8 | patience=4/4 | train_time=23.13s | val_time=1.70s | epoch_time=24.83s | model_time=247.56s | gpu_peak=21.2 MiB
+Early stopping activated for mlp_h40 at epoch 12: validation AUPRC did not improve by at least 0 for 4 epochs.
+Best checkpoint restored for mlp_h40: epoch 8, validation AUPRC=0.428750.
+Test evaluation begins for mlp_h40.
+Run saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\runs\mlp_h40.json
+
+===== run started 2026-10-06T07:35:34.215762+00:00 argv=['--run', '--family', 'kan', '--hidden-dim', '8', '--first-epoch-timeout', '360'] =====
+Materialized datasets in 19.91s.
+Model 1/1: kan_h8
+Device: cuda
+Trainable parameters: 5,617
+Training settings: max_epochs=25, min_epochs=5, monitor=validation AUPRC, patience=4, min_delta=0, checkpoint_every=5
+kan_h8 epoch 1 batch 10/88 | elapsed=5.6s | fwd_nfe=56 | bwd_nfe=50 | max|h|=18.1
+kan_h8 epoch 1 batch 20/88 | elapsed=9.9s | fwd_nfe=44 | bwd_nfe=44 | max|h|=6.32
+kan_h8 epoch 1 batch 30/88 | elapsed=13.7s | fwd_nfe=44 | bwd_nfe=44 | max|h|=4.73
+kan_h8 epoch 1 batch 40/88 | elapsed=17.8s | fwd_nfe=50 | bwd_nfe=50 | max|h|=5.49
+kan_h8 epoch 1 batch 50/88 | elapsed=21.4s | fwd_nfe=38 | bwd_nfe=38 | max|h|=5.42
+kan_h8 epoch 1 batch 60/88 | elapsed=25.2s | fwd_nfe=44 | bwd_nfe=44 | max|h|=4.87
+kan_h8 epoch 1 batch 70/88 | elapsed=28.9s | fwd_nfe=44 | bwd_nfe=44 | max|h|=5.14
+kan_h8 epoch 1 batch 80/88 | elapsed=32.8s | fwd_nfe=38 | bwd_nfe=44 | max|h|=5.47
+Validation AUPRC improved for kan_h8: 0.155947 at epoch 1.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\latest.pt
+kan_h8 | epoch 1/25 | train_loss=0.485691 | val_AUROC=0.521598 | val_AUPRC=0.155947 | best_AUPRC=0.155947 | best_epoch=1 | patience=0/4 | train_time=35.92s | val_time=2.08s | epoch_time=38.01s | model_time=38.01s | gpu_peak=20.0 MiB
+kan_h8 epoch 2 batch 10/88 | elapsed=3.6s | fwd_nfe=38 | bwd_nfe=44 | max|h|=6.88
+kan_h8 epoch 2 batch 20/88 | elapsed=7.5s | fwd_nfe=38 | bwd_nfe=56 | max|h|=7.85
+kan_h8 epoch 2 batch 30/88 | elapsed=11.4s | fwd_nfe=38 | bwd_nfe=44 | max|h|=5.89
+kan_h8 epoch 2 batch 40/88 | elapsed=15.1s | fwd_nfe=38 | bwd_nfe=44 | max|h|=6.2
+kan_h8 epoch 2 batch 50/88 | elapsed=18.9s | fwd_nfe=38 | bwd_nfe=44 | max|h|=6.04
+kan_h8 epoch 2 batch 60/88 | elapsed=23.0s | fwd_nfe=38 | bwd_nfe=56 | max|h|=5.99
+kan_h8 epoch 2 batch 70/88 | elapsed=26.8s | fwd_nfe=38 | bwd_nfe=50 | max|h|=6.45
+kan_h8 epoch 2 batch 80/88 | elapsed=30.6s | fwd_nfe=38 | bwd_nfe=50 | max|h|=6.23
+Validation AUPRC improved for kan_h8: 0.272238 at epoch 2.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\latest.pt
+kan_h8 | epoch 2/25 | train_loss=0.402415 | val_AUROC=0.664285 | val_AUPRC=0.272238 | best_AUPRC=0.272238 | best_epoch=2 | patience=0/4 | train_time=33.62s | val_time=2.34s | epoch_time=35.96s | model_time=73.99s | gpu_peak=20.0 MiB
+kan_h8 epoch 3 batch 10/88 | elapsed=4.1s | fwd_nfe=38 | bwd_nfe=38 | max|h|=5.53
+kan_h8 epoch 3 batch 20/88 | elapsed=8.2s | fwd_nfe=44 | bwd_nfe=50 | max|h|=5.99
+kan_h8 epoch 3 batch 30/88 | elapsed=12.5s | fwd_nfe=56 | bwd_nfe=50 | max|h|=12.5
+kan_h8 epoch 3 batch 40/88 | elapsed=17.4s | fwd_nfe=62 | bwd_nfe=50 | max|h|=13.2
+kan_h8 epoch 3 batch 50/88 | elapsed=22.0s | fwd_nfe=44 | bwd_nfe=44 | max|h|=7.2
+kan_h8 epoch 3 batch 60/88 | elapsed=26.5s | fwd_nfe=44 | bwd_nfe=50 | max|h|=5.34
+kan_h8 epoch 3 batch 70/88 | elapsed=31.0s | fwd_nfe=56 | bwd_nfe=50 | max|h|=8.78
+kan_h8 epoch 3 batch 80/88 | elapsed=35.5s | fwd_nfe=56 | bwd_nfe=62 | max|h|=8.96
+Validation AUPRC improved for kan_h8: 0.392560 at epoch 3.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\latest.pt
+kan_h8 | epoch 3/25 | train_loss=0.377143 | val_AUROC=0.787592 | val_AUPRC=0.392560 | best_AUPRC=0.392560 | best_epoch=3 | patience=0/4 | train_time=39.18s | val_time=2.96s | epoch_time=42.14s | model_time=116.14s | gpu_peak=20.0 MiB
+kan_h8 epoch 4 batch 10/88 | elapsed=4.3s | fwd_nfe=56 | bwd_nfe=50 | max|h|=8.22
+kan_h8 epoch 4 batch 20/88 | elapsed=8.7s | fwd_nfe=56 | bwd_nfe=50 | max|h|=8.44
+kan_h8 epoch 4 batch 30/88 | elapsed=13.2s | fwd_nfe=50 | bwd_nfe=50 | max|h|=10.5
+kan_h8 epoch 4 batch 40/88 | elapsed=17.7s | fwd_nfe=50 | bwd_nfe=50 | max|h|=11.2
+kan_h8 epoch 4 batch 50/88 | elapsed=22.3s | fwd_nfe=62 | bwd_nfe=50 | max|h|=13.6
+kan_h8 epoch 4 batch 60/88 | elapsed=27.1s | fwd_nfe=50 | bwd_nfe=62 | max|h|=13.7
+kan_h8 epoch 4 batch 70/88 | elapsed=31.9s | fwd_nfe=68 | bwd_nfe=62 | max|h|=18.9
+kan_h8 epoch 4 batch 80/88 | elapsed=37.0s | fwd_nfe=56 | bwd_nfe=56 | max|h|=15.8
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\latest.pt
+kan_h8 | epoch 4/25 | train_loss=0.372103 | val_AUROC=0.775451 | val_AUPRC=0.365336 | best_AUPRC=0.392560 | best_epoch=3 | patience=1/4 | train_time=41.00s | val_time=2.53s | epoch_time=43.53s | model_time=159.69s | gpu_peak=20.0 MiB
+kan_h8 epoch 5 batch 10/88 | elapsed=4.6s | fwd_nfe=44 | bwd_nfe=50 | max|h|=8.5
+kan_h8 epoch 5 batch 20/88 | elapsed=9.4s | fwd_nfe=50 | bwd_nfe=56 | max|h|=15.1
+kan_h8 epoch 5 batch 30/88 | elapsed=13.6s | fwd_nfe=44 | bwd_nfe=50 | max|h|=10.3
+kan_h8 epoch 5 batch 40/88 | elapsed=18.3s | fwd_nfe=38 | bwd_nfe=50 | max|h|=9.07
+kan_h8 epoch 5 batch 50/88 | elapsed=22.7s | fwd_nfe=44 | bwd_nfe=68 | max|h|=13.1
+kan_h8 epoch 5 batch 60/88 | elapsed=27.2s | fwd_nfe=38 | bwd_nfe=62 | max|h|=8.66
+kan_h8 epoch 5 batch 70/88 | elapsed=31.5s | fwd_nfe=38 | bwd_nfe=50 | max|h|=10.2
+kan_h8 epoch 5 batch 80/88 | elapsed=36.0s | fwd_nfe=44 | bwd_nfe=62 | max|h|=7
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\epoch_005.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\latest.pt
+kan_h8 | epoch 5/25 | train_loss=0.362860 | val_AUROC=0.775240 | val_AUPRC=0.376903 | best_AUPRC=0.392560 | best_epoch=3 | patience=2/4 | train_time=39.59s | val_time=2.34s | epoch_time=41.92s | model_time=201.62s | gpu_peak=20.0 MiB
+kan_h8 epoch 6 batch 10/88 | elapsed=4.5s | fwd_nfe=38 | bwd_nfe=56 | max|h|=7.8
+kan_h8 epoch 6 batch 20/88 | elapsed=8.8s | fwd_nfe=44 | bwd_nfe=56 | max|h|=9.4
+kan_h8 epoch 6 batch 30/88 | elapsed=13.1s | fwd_nfe=38 | bwd_nfe=44 | max|h|=6.74
+kan_h8 epoch 6 batch 40/88 | elapsed=17.6s | fwd_nfe=44 | bwd_nfe=56 | max|h|=9.85
+kan_h8 epoch 6 batch 50/88 | elapsed=22.2s | fwd_nfe=44 | bwd_nfe=50 | max|h|=11.7
+kan_h8 epoch 6 batch 60/88 | elapsed=26.6s | fwd_nfe=44 | bwd_nfe=56 | max|h|=8.66
+kan_h8 epoch 6 batch 70/88 | elapsed=31.1s | fwd_nfe=44 | bwd_nfe=68 | max|h|=16.3
+kan_h8 epoch 6 batch 80/88 | elapsed=35.8s | fwd_nfe=38 | bwd_nfe=62 | max|h|=8.44
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\latest.pt
+kan_h8 | epoch 6/25 | train_loss=0.354310 | val_AUROC=0.779280 | val_AUPRC=0.388396 | best_AUPRC=0.392560 | best_epoch=3 | patience=3/4 | train_time=39.66s | val_time=2.35s | epoch_time=42.01s | model_time=243.65s | gpu_peak=20.0 MiB
+kan_h8 epoch 7 batch 10/88 | elapsed=4.8s | fwd_nfe=38 | bwd_nfe=62 | max|h|=7.66
+kan_h8 epoch 7 batch 20/88 | elapsed=9.4s | fwd_nfe=44 | bwd_nfe=62 | max|h|=8.36
+kan_h8 epoch 7 batch 30/88 | elapsed=14.2s | fwd_nfe=44 | bwd_nfe=62 | max|h|=8.82
+kan_h8 epoch 7 batch 40/88 | elapsed=19.0s | fwd_nfe=44 | bwd_nfe=62 | max|h|=8.59
+kan_h8 epoch 7 batch 50/88 | elapsed=23.7s | fwd_nfe=44 | bwd_nfe=62 | max|h|=10.6
+kan_h8 epoch 7 batch 60/88 | elapsed=28.4s | fwd_nfe=44 | bwd_nfe=62 | max|h|=8.41
+kan_h8 epoch 7 batch 70/88 | elapsed=32.9s | fwd_nfe=44 | bwd_nfe=56 | max|h|=7.52
+kan_h8 epoch 7 batch 80/88 | elapsed=37.9s | fwd_nfe=44 | bwd_nfe=62 | max|h|=7.95
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h8\latest.pt
+kan_h8 | epoch 7/25 | train_loss=0.354278 | val_AUROC=0.784066 | val_AUPRC=0.386400 | best_AUPRC=0.392560 | best_epoch=3 | patience=4/4 | train_time=41.83s | val_time=2.38s | epoch_time=44.21s | model_time=287.86s | gpu_peak=20.0 MiB
+Early stopping activated for kan_h8 at epoch 7: validation AUPRC did not improve by at least 0 for 4 epochs.
+Best checkpoint restored for kan_h8: epoch 3, validation AUPRC=0.392560.
+Test evaluation begins for kan_h8.
+Run saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\runs\kan_h8.json
+
+===== run started 2026-10-06T07:40:49.243294+00:00 argv=['--run', '--family', 'kan', '--hidden-dim', '20', '--first-epoch-timeout', '360'] =====
+Imported kan_h20 from Experiment 1: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\runs\kan_h20.json
+
+===== run started 2026-10-06T07:40:54.487057+00:00 argv=['--run', '--family', 'kan', '--hidden-dim', '40', '--first-epoch-timeout', '360'] =====
+Materialized datasets in 19.89s.
+Model 1/1: kan_h40
+Device: cuda
+Trainable parameters: 11,038
+Training settings: max_epochs=25, min_epochs=5, monitor=validation AUPRC, patience=4, min_delta=0, checkpoint_every=5
+kan_h40 epoch 1 batch 10/88 | elapsed=9.5s | fwd_nfe=80 | bwd_nfe=116 | max|h|=81.8
+kan_h40 epoch 1 batch 20/88 | elapsed=17.5s | fwd_nfe=68 | bwd_nfe=116 | max|h|=71.4
+kan_h40 epoch 1 batch 30/88 | elapsed=24.8s | fwd_nfe=68 | bwd_nfe=92 | max|h|=23.7
+kan_h40 epoch 1 batch 40/88 | elapsed=33.7s | fwd_nfe=74 | bwd_nfe=146 | max|h|=137
+kan_h40 epoch 1 batch 50/88 | elapsed=45.9s | fwd_nfe=80 | bwd_nfe=182 | max|h|=224
+kan_h40 epoch 1 batch 60/88 | elapsed=57.1s | fwd_nfe=74 | bwd_nfe=188 | max|h|=323
+kan_h40 epoch 1 batch 70/88 | elapsed=67.5s | fwd_nfe=74 | bwd_nfe=110 | max|h|=184
+kan_h40 epoch 1 batch 80/88 | elapsed=76.6s | fwd_nfe=68 | bwd_nfe=164 | max|h|=42.9
+Validation AUPRC improved for kan_h40: 0.220347 at epoch 1.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 1/25 | train_loss=0.596463 | val_AUROC=0.601172 | val_AUPRC=0.220347 | best_AUPRC=0.220347 | best_epoch=1 | patience=0/4 | train_time=83.74s | val_time=3.66s | epoch_time=87.42s | model_time=87.42s | gpu_peak=21.5 MiB
+kan_h40 epoch 2 batch 10/88 | elapsed=8.6s | fwd_nfe=68 | bwd_nfe=146 | max|h|=26.4
+kan_h40 epoch 2 batch 20/88 | elapsed=17.6s | fwd_nfe=68 | bwd_nfe=98 | max|h|=19.6
+kan_h40 epoch 2 batch 30/88 | elapsed=25.8s | fwd_nfe=68 | bwd_nfe=116 | max|h|=21.8
+kan_h40 epoch 2 batch 40/88 | elapsed=33.9s | fwd_nfe=68 | bwd_nfe=128 | max|h|=27.5
+kan_h40 epoch 2 batch 50/88 | elapsed=42.4s | fwd_nfe=68 | bwd_nfe=116 | max|h|=22.9
+kan_h40 epoch 2 batch 60/88 | elapsed=50.2s | fwd_nfe=74 | bwd_nfe=98 | max|h|=20.7
+kan_h40 epoch 2 batch 70/88 | elapsed=58.1s | fwd_nfe=68 | bwd_nfe=104 | max|h|=32.6
+kan_h40 epoch 2 batch 80/88 | elapsed=66.1s | fwd_nfe=68 | bwd_nfe=122 | max|h|=50.3
+Validation AUPRC improved for kan_h40: 0.317307 at epoch 2.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 2/25 | train_loss=0.409928 | val_AUROC=0.691160 | val_AUPRC=0.317307 | best_AUPRC=0.317307 | best_epoch=2 | patience=0/4 | train_time=72.68s | val_time=3.34s | epoch_time=76.02s | model_time=163.45s | gpu_peak=21.5 MiB
+kan_h40 epoch 3 batch 10/88 | elapsed=7.0s | fwd_nfe=62 | bwd_nfe=104 | max|h|=28.8
+kan_h40 epoch 3 batch 20/88 | elapsed=14.5s | fwd_nfe=68 | bwd_nfe=92 | max|h|=72.8
+kan_h40 epoch 3 batch 30/88 | elapsed=22.1s | fwd_nfe=68 | bwd_nfe=98 | max|h|=38.3
+kan_h40 epoch 3 batch 40/88 | elapsed=29.9s | fwd_nfe=56 | bwd_nfe=104 | max|h|=32.9
+kan_h40 epoch 3 batch 50/88 | elapsed=37.6s | fwd_nfe=62 | bwd_nfe=104 | max|h|=62
+kan_h40 epoch 3 batch 60/88 | elapsed=45.9s | fwd_nfe=62 | bwd_nfe=110 | max|h|=67
+kan_h40 epoch 3 batch 70/88 | elapsed=55.0s | fwd_nfe=62 | bwd_nfe=128 | max|h|=90.2
+kan_h40 epoch 3 batch 80/88 | elapsed=64.1s | fwd_nfe=68 | bwd_nfe=146 | max|h|=88.1
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 3/25 | train_loss=0.411325 | val_AUROC=0.684996 | val_AUPRC=0.314058 | best_AUPRC=0.317307 | best_epoch=2 | patience=1/4 | train_time=71.19s | val_time=3.74s | epoch_time=74.93s | model_time=238.40s | gpu_peak=21.5 MiB
+kan_h40 epoch 4 batch 10/88 | elapsed=8.8s | fwd_nfe=74 | bwd_nfe=146 | max|h|=106
+kan_h40 epoch 4 batch 20/88 | elapsed=17.5s | fwd_nfe=68 | bwd_nfe=110 | max|h|=109
+kan_h40 epoch 4 batch 30/88 | elapsed=25.8s | fwd_nfe=68 | bwd_nfe=128 | max|h|=110
+kan_h40 epoch 4 batch 40/88 | elapsed=34.7s | fwd_nfe=74 | bwd_nfe=116 | max|h|=86.7
+kan_h40 epoch 4 batch 50/88 | elapsed=43.5s | fwd_nfe=68 | bwd_nfe=128 | max|h|=117
+kan_h40 epoch 4 batch 60/88 | elapsed=51.9s | fwd_nfe=62 | bwd_nfe=98 | max|h|=91.1
+kan_h40 epoch 4 batch 70/88 | elapsed=60.8s | fwd_nfe=62 | bwd_nfe=122 | max|h|=68.1
+kan_h40 epoch 4 batch 80/88 | elapsed=69.4s | fwd_nfe=68 | bwd_nfe=122 | max|h|=94.9
+Validation AUPRC improved for kan_h40: 0.320579 at epoch 4.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 4/25 | train_loss=0.368105 | val_AUROC=0.688498 | val_AUPRC=0.320579 | best_AUPRC=0.320579 | best_epoch=4 | patience=0/4 | train_time=76.56s | val_time=3.39s | epoch_time=79.95s | model_time=318.36s | gpu_peak=21.5 MiB
+kan_h40 epoch 5 batch 10/88 | elapsed=8.6s | fwd_nfe=62 | bwd_nfe=122 | max|h|=97
+kan_h40 epoch 5 batch 20/88 | elapsed=17.4s | fwd_nfe=62 | bwd_nfe=116 | max|h|=83.9
+kan_h40 epoch 5 batch 30/88 | elapsed=26.7s | fwd_nfe=68 | bwd_nfe=128 | max|h|=80.4
+kan_h40 epoch 5 batch 40/88 | elapsed=35.3s | fwd_nfe=68 | bwd_nfe=140 | max|h|=67.9
+kan_h40 epoch 5 batch 50/88 | elapsed=44.1s | fwd_nfe=62 | bwd_nfe=146 | max|h|=61.9
+kan_h40 epoch 5 batch 60/88 | elapsed=52.5s | fwd_nfe=62 | bwd_nfe=116 | max|h|=82.2
+kan_h40 epoch 5 batch 70/88 | elapsed=60.3s | fwd_nfe=62 | bwd_nfe=98 | max|h|=82.6
+kan_h40 epoch 5 batch 80/88 | elapsed=68.0s | fwd_nfe=74 | bwd_nfe=110 | max|h|=161
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\epoch_005.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 5/25 | train_loss=0.374930 | val_AUROC=0.689829 | val_AUPRC=0.316566 | best_AUPRC=0.320579 | best_epoch=4 | patience=1/4 | train_time=73.97s | val_time=3.61s | epoch_time=77.59s | model_time=395.96s | gpu_peak=21.5 MiB
+kan_h40 epoch 6 batch 10/88 | elapsed=7.7s | fwd_nfe=68 | bwd_nfe=92 | max|h|=90.8
+kan_h40 epoch 6 batch 20/88 | elapsed=15.3s | fwd_nfe=62 | bwd_nfe=110 | max|h|=103
+kan_h40 epoch 6 batch 30/88 | elapsed=23.9s | fwd_nfe=68 | bwd_nfe=92 | max|h|=99.6
+kan_h40 epoch 6 batch 40/88 | elapsed=32.6s | fwd_nfe=62 | bwd_nfe=140 | max|h|=102
+kan_h40 epoch 6 batch 50/88 | elapsed=41.5s | fwd_nfe=62 | bwd_nfe=116 | max|h|=88.5
+kan_h40 epoch 6 batch 60/88 | elapsed=50.1s | fwd_nfe=74 | bwd_nfe=128 | max|h|=124
+kan_h40 epoch 6 batch 70/88 | elapsed=57.5s | fwd_nfe=68 | bwd_nfe=80 | max|h|=28
+kan_h40 epoch 6 batch 80/88 | elapsed=64.3s | fwd_nfe=62 | bwd_nfe=92 | max|h|=63.4
+Validation AUPRC improved for kan_h40: 0.325628 at epoch 6.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 6/25 | train_loss=0.384636 | val_AUROC=0.701807 | val_AUPRC=0.325628 | best_AUPRC=0.325628 | best_epoch=6 | patience=0/4 | train_time=68.84s | val_time=3.17s | epoch_time=72.01s | model_time=467.98s | gpu_peak=21.5 MiB
+kan_h40 epoch 7 batch 10/88 | elapsed=7.9s | fwd_nfe=80 | bwd_nfe=134 | max|h|=60.6
+kan_h40 epoch 7 batch 20/88 | elapsed=17.8s | fwd_nfe=74 | bwd_nfe=158 | max|h|=51.3
+kan_h40 epoch 7 batch 30/88 | elapsed=26.4s | fwd_nfe=68 | bwd_nfe=110 | max|h|=73.4
+kan_h40 epoch 7 batch 40/88 | elapsed=32.6s | fwd_nfe=62 | bwd_nfe=56 | max|h|=17.9
+kan_h40 epoch 7 batch 50/88 | elapsed=37.6s | fwd_nfe=62 | bwd_nfe=68 | max|h|=21.1
+kan_h40 epoch 7 batch 60/88 | elapsed=42.7s | fwd_nfe=56 | bwd_nfe=50 | max|h|=14.8
+kan_h40 epoch 7 batch 70/88 | elapsed=47.6s | fwd_nfe=56 | bwd_nfe=62 | max|h|=15.3
+kan_h40 epoch 7 batch 80/88 | elapsed=52.6s | fwd_nfe=56 | bwd_nfe=56 | max|h|=13.3
+Validation AUPRC improved for kan_h40: 0.345166 at epoch 7.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 7/25 | train_loss=0.487252 | val_AUROC=0.750257 | val_AUPRC=0.345166 | best_AUPRC=0.345166 | best_epoch=7 | patience=0/4 | train_time=56.38s | val_time=3.17s | epoch_time=59.56s | model_time=527.55s | gpu_peak=21.5 MiB
+kan_h40 epoch 8 batch 10/88 | elapsed=5.3s | fwd_nfe=62 | bwd_nfe=152 | max|h|=79.8
+kan_h40 epoch 8 batch 20/88 | elapsed=10.1s | fwd_nfe=56 | bwd_nfe=62 | max|h|=14.6
+kan_h40 epoch 8 batch 30/88 | elapsed=15.4s | fwd_nfe=62 | bwd_nfe=44 | max|h|=12.1
+kan_h40 epoch 8 batch 40/88 | elapsed=20.1s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.6
+kan_h40 epoch 8 batch 50/88 | elapsed=24.9s | fwd_nfe=44 | bwd_nfe=62 | max|h|=12.1
+kan_h40 epoch 8 batch 60/88 | elapsed=29.9s | fwd_nfe=56 | bwd_nfe=62 | max|h|=14.6
+kan_h40 epoch 8 batch 70/88 | elapsed=35.0s | fwd_nfe=56 | bwd_nfe=62 | max|h|=12.9
+kan_h40 epoch 8 batch 80/88 | elapsed=40.0s | fwd_nfe=56 | bwd_nfe=62 | max|h|=13.2
+Validation AUPRC improved for kan_h40: 0.403370 at epoch 8.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 8/25 | train_loss=0.388746 | val_AUROC=0.780821 | val_AUPRC=0.403370 | best_AUPRC=0.403370 | best_epoch=8 | patience=0/4 | train_time=44.03s | val_time=3.06s | epoch_time=47.09s | model_time=574.66s | gpu_peak=21.5 MiB
+kan_h40 epoch 9 batch 10/88 | elapsed=4.6s | fwd_nfe=56 | bwd_nfe=56 | max|h|=12.3
+kan_h40 epoch 9 batch 20/88 | elapsed=9.3s | fwd_nfe=56 | bwd_nfe=62 | max|h|=14.4
+kan_h40 epoch 9 batch 30/88 | elapsed=13.9s | fwd_nfe=50 | bwd_nfe=50 | max|h|=12.8
+kan_h40 epoch 9 batch 40/88 | elapsed=18.8s | fwd_nfe=62 | bwd_nfe=62 | max|h|=12.2
+kan_h40 epoch 9 batch 50/88 | elapsed=24.4s | fwd_nfe=56 | bwd_nfe=56 | max|h|=11.9
+kan_h40 epoch 9 batch 60/88 | elapsed=29.4s | fwd_nfe=62 | bwd_nfe=56 | max|h|=12.4
+kan_h40 epoch 9 batch 70/88 | elapsed=34.4s | fwd_nfe=56 | bwd_nfe=56 | max|h|=12.2
+kan_h40 epoch 9 batch 80/88 | elapsed=39.3s | fwd_nfe=56 | bwd_nfe=56 | max|h|=11.6
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 9/25 | train_loss=0.366017 | val_AUROC=0.770080 | val_AUPRC=0.361496 | best_AUPRC=0.403370 | best_epoch=8 | patience=1/4 | train_time=43.11s | val_time=2.99s | epoch_time=46.10s | model_time=620.77s | gpu_peak=21.5 MiB
+kan_h40 epoch 10 batch 10/88 | elapsed=5.0s | fwd_nfe=56 | bwd_nfe=62 | max|h|=12.8
+kan_h40 epoch 10 batch 20/88 | elapsed=9.9s | fwd_nfe=56 | bwd_nfe=56 | max|h|=13.4
+kan_h40 epoch 10 batch 30/88 | elapsed=14.8s | fwd_nfe=56 | bwd_nfe=62 | max|h|=12.7
+kan_h40 epoch 10 batch 40/88 | elapsed=19.4s | fwd_nfe=56 | bwd_nfe=56 | max|h|=14.2
+kan_h40 epoch 10 batch 50/88 | elapsed=24.3s | fwd_nfe=56 | bwd_nfe=62 | max|h|=12
+kan_h40 epoch 10 batch 60/88 | elapsed=29.0s | fwd_nfe=56 | bwd_nfe=50 | max|h|=12.6
+kan_h40 epoch 10 batch 70/88 | elapsed=34.6s | fwd_nfe=56 | bwd_nfe=62 | max|h|=15.5
+kan_h40 epoch 10 batch 80/88 | elapsed=39.5s | fwd_nfe=56 | bwd_nfe=68 | max|h|=27
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\epoch_010.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 10/25 | train_loss=0.376161 | val_AUROC=0.744957 | val_AUPRC=0.347227 | best_AUPRC=0.403370 | best_epoch=8 | patience=2/4 | train_time=43.26s | val_time=2.75s | epoch_time=46.00s | model_time=666.78s | gpu_peak=21.5 MiB
+kan_h40 epoch 11 batch 10/88 | elapsed=4.9s | fwd_nfe=68 | bwd_nfe=62 | max|h|=12.2
+kan_h40 epoch 11 batch 20/88 | elapsed=9.9s | fwd_nfe=62 | bwd_nfe=62 | max|h|=13.1
+kan_h40 epoch 11 batch 30/88 | elapsed=14.9s | fwd_nfe=56 | bwd_nfe=62 | max|h|=12.2
+kan_h40 epoch 11 batch 40/88 | elapsed=20.0s | fwd_nfe=56 | bwd_nfe=56 | max|h|=11.5
+kan_h40 epoch 11 batch 50/88 | elapsed=25.0s | fwd_nfe=50 | bwd_nfe=62 | max|h|=13.6
+kan_h40 epoch 11 batch 60/88 | elapsed=30.7s | fwd_nfe=56 | bwd_nfe=56 | max|h|=12.3
+kan_h40 epoch 11 batch 70/88 | elapsed=35.7s | fwd_nfe=56 | bwd_nfe=62 | max|h|=11.7
+kan_h40 epoch 11 batch 80/88 | elapsed=40.7s | fwd_nfe=50 | bwd_nfe=62 | max|h|=13.9
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 11/25 | train_loss=0.346368 | val_AUROC=0.761138 | val_AUPRC=0.389980 | best_AUPRC=0.403370 | best_epoch=8 | patience=3/4 | train_time=44.56s | val_time=3.06s | epoch_time=47.62s | model_time=714.41s | gpu_peak=21.5 MiB
+kan_h40 epoch 12 batch 10/88 | elapsed=4.9s | fwd_nfe=56 | bwd_nfe=56 | max|h|=12.7
+kan_h40 epoch 12 batch 20/88 | elapsed=10.1s | fwd_nfe=56 | bwd_nfe=68 | max|h|=13
+kan_h40 epoch 12 batch 30/88 | elapsed=15.2s | fwd_nfe=56 | bwd_nfe=56 | max|h|=11.7
+kan_h40 epoch 12 batch 40/88 | elapsed=20.0s | fwd_nfe=56 | bwd_nfe=56 | max|h|=13.1
+kan_h40 epoch 12 batch 50/88 | elapsed=24.9s | fwd_nfe=56 | bwd_nfe=56 | max|h|=12.7
+kan_h40 epoch 12 batch 60/88 | elapsed=29.8s | fwd_nfe=56 | bwd_nfe=56 | max|h|=11.9
+kan_h40 epoch 12 batch 70/88 | elapsed=34.7s | fwd_nfe=56 | bwd_nfe=56 | max|h|=13.1
+kan_h40 epoch 12 batch 80/88 | elapsed=39.5s | fwd_nfe=62 | bwd_nfe=62 | max|h|=13
+Validation AUPRC improved for kan_h40: 0.408915 at epoch 12.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 12/25 | train_loss=0.346186 | val_AUROC=0.787732 | val_AUPRC=0.408915 | best_AUPRC=0.408915 | best_epoch=12 | patience=0/4 | train_time=43.41s | val_time=3.19s | epoch_time=46.60s | model_time=761.02s | gpu_peak=21.5 MiB
+kan_h40 epoch 13 batch 10/88 | elapsed=5.0s | fwd_nfe=56 | bwd_nfe=56 | max|h|=12.1
+kan_h40 epoch 13 batch 20/88 | elapsed=9.9s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.4
+kan_h40 epoch 13 batch 30/88 | elapsed=14.7s | fwd_nfe=68 | bwd_nfe=50 | max|h|=11.1
+kan_h40 epoch 13 batch 40/88 | elapsed=19.5s | fwd_nfe=62 | bwd_nfe=50 | max|h|=12.9
+kan_h40 epoch 13 batch 50/88 | elapsed=24.5s | fwd_nfe=62 | bwd_nfe=62 | max|h|=11.6
+kan_h40 epoch 13 batch 60/88 | elapsed=29.4s | fwd_nfe=56 | bwd_nfe=62 | max|h|=13.2
+kan_h40 epoch 13 batch 70/88 | elapsed=34.2s | fwd_nfe=62 | bwd_nfe=56 | max|h|=10.8
+kan_h40 epoch 13 batch 80/88 | elapsed=39.1s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.5
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 13/25 | train_loss=0.357795 | val_AUROC=0.784604 | val_AUPRC=0.398858 | best_AUPRC=0.408915 | best_epoch=12 | patience=1/4 | train_time=43.09s | val_time=3.40s | epoch_time=46.49s | model_time=807.52s | gpu_peak=21.5 MiB
+kan_h40 epoch 14 batch 10/88 | elapsed=4.9s | fwd_nfe=68 | bwd_nfe=56 | max|h|=10.7
+kan_h40 epoch 14 batch 20/88 | elapsed=10.0s | fwd_nfe=62 | bwd_nfe=50 | max|h|=10
+kan_h40 epoch 14 batch 30/88 | elapsed=15.0s | fwd_nfe=62 | bwd_nfe=62 | max|h|=11.2
+kan_h40 epoch 14 batch 40/88 | elapsed=19.9s | fwd_nfe=62 | bwd_nfe=56 | max|h|=12.5
+kan_h40 epoch 14 batch 50/88 | elapsed=25.0s | fwd_nfe=62 | bwd_nfe=56 | max|h|=12.5
+kan_h40 epoch 14 batch 60/88 | elapsed=30.0s | fwd_nfe=62 | bwd_nfe=56 | max|h|=12
+kan_h40 epoch 14 batch 70/88 | elapsed=35.0s | fwd_nfe=56 | bwd_nfe=56 | max|h|=13
+kan_h40 epoch 14 batch 80/88 | elapsed=40.0s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.6
+Validation AUPRC improved for kan_h40: 0.415083 at epoch 14.
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\best.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 14/25 | train_loss=0.340083 | val_AUROC=0.797119 | val_AUPRC=0.415083 | best_AUPRC=0.415083 | best_epoch=14 | patience=0/4 | train_time=43.96s | val_time=3.17s | epoch_time=47.14s | model_time=854.67s | gpu_peak=21.5 MiB
+kan_h40 epoch 15 batch 10/88 | elapsed=4.9s | fwd_nfe=62 | bwd_nfe=56 | max|h|=9.84
+kan_h40 epoch 15 batch 20/88 | elapsed=9.8s | fwd_nfe=62 | bwd_nfe=56 | max|h|=13.1
+kan_h40 epoch 15 batch 30/88 | elapsed=14.7s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.4
+kan_h40 epoch 15 batch 40/88 | elapsed=19.7s | fwd_nfe=56 | bwd_nfe=56 | max|h|=10.1
+kan_h40 epoch 15 batch 50/88 | elapsed=24.6s | fwd_nfe=50 | bwd_nfe=62 | max|h|=11
+kan_h40 epoch 15 batch 60/88 | elapsed=29.5s | fwd_nfe=50 | bwd_nfe=56 | max|h|=11.7
+kan_h40 epoch 15 batch 70/88 | elapsed=34.3s | fwd_nfe=56 | bwd_nfe=56 | max|h|=11.5
+kan_h40 epoch 15 batch 80/88 | elapsed=39.2s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.8
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\epoch_015.pt
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 15/25 | train_loss=0.347872 | val_AUROC=0.791515 | val_AUPRC=0.408894 | best_AUPRC=0.415083 | best_epoch=14 | patience=1/4 | train_time=43.20s | val_time=3.38s | epoch_time=46.59s | model_time=901.27s | gpu_peak=21.5 MiB
+kan_h40 epoch 16 batch 10/88 | elapsed=5.0s | fwd_nfe=68 | bwd_nfe=62 | max|h|=10.8
+kan_h40 epoch 16 batch 20/88 | elapsed=10.1s | fwd_nfe=62 | bwd_nfe=56 | max|h|=12
+kan_h40 epoch 16 batch 30/88 | elapsed=15.2s | fwd_nfe=68 | bwd_nfe=56 | max|h|=10.5
+kan_h40 epoch 16 batch 40/88 | elapsed=20.3s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.1
+kan_h40 epoch 16 batch 50/88 | elapsed=25.4s | fwd_nfe=68 | bwd_nfe=62 | max|h|=11.1
+kan_h40 epoch 16 batch 60/88 | elapsed=30.4s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.4
+kan_h40 epoch 16 batch 70/88 | elapsed=35.5s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.6
+kan_h40 epoch 16 batch 80/88 | elapsed=40.7s | fwd_nfe=56 | bwd_nfe=56 | max|h|=10.7
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 16/25 | train_loss=0.339309 | val_AUROC=0.794060 | val_AUPRC=0.406885 | best_AUPRC=0.415083 | best_epoch=14 | patience=2/4 | train_time=44.77s | val_time=3.33s | epoch_time=48.10s | model_time=949.38s | gpu_peak=21.5 MiB
+kan_h40 epoch 17 batch 10/88 | elapsed=5.2s | fwd_nfe=68 | bwd_nfe=62 | max|h|=10.8
+kan_h40 epoch 17 batch 20/88 | elapsed=10.5s | fwd_nfe=68 | bwd_nfe=62 | max|h|=11.8
+kan_h40 epoch 17 batch 30/88 | elapsed=15.9s | fwd_nfe=68 | bwd_nfe=62 | max|h|=11.2
+kan_h40 epoch 17 batch 40/88 | elapsed=21.4s | fwd_nfe=68 | bwd_nfe=62 | max|h|=10.7
+kan_h40 epoch 17 batch 50/88 | elapsed=26.6s | fwd_nfe=68 | bwd_nfe=56 | max|h|=10.8
+kan_h40 epoch 17 batch 60/88 | elapsed=32.0s | fwd_nfe=68 | bwd_nfe=56 | max|h|=12.1
+kan_h40 epoch 17 batch 70/88 | elapsed=37.2s | fwd_nfe=62 | bwd_nfe=62 | max|h|=11.3
+kan_h40 epoch 17 batch 80/88 | elapsed=42.4s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.7
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 17/25 | train_loss=0.339123 | val_AUROC=0.795111 | val_AUPRC=0.408922 | best_AUPRC=0.415083 | best_epoch=14 | patience=3/4 | train_time=46.89s | val_time=3.41s | epoch_time=50.30s | model_time=999.69s | gpu_peak=21.5 MiB
+kan_h40 epoch 18 batch 10/88 | elapsed=5.2s | fwd_nfe=68 | bwd_nfe=56 | max|h|=11.7
+kan_h40 epoch 18 batch 20/88 | elapsed=10.2s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.3
+kan_h40 epoch 18 batch 30/88 | elapsed=15.6s | fwd_nfe=62 | bwd_nfe=56 | max|h|=11.3
+kan_h40 epoch 18 batch 40/88 | elapsed=20.6s | fwd_nfe=62 | bwd_nfe=56 | max|h|=13.2
+kan_h40 epoch 18 batch 50/88 | elapsed=25.7s | fwd_nfe=68 | bwd_nfe=56 | max|h|=11.9
+kan_h40 epoch 18 batch 60/88 | elapsed=31.0s | fwd_nfe=68 | bwd_nfe=56 | max|h|=10.5
+kan_h40 epoch 18 batch 70/88 | elapsed=36.3s | fwd_nfe=62 | bwd_nfe=62 | max|h|=10.3
+kan_h40 epoch 18 batch 80/88 | elapsed=41.3s | fwd_nfe=68 | bwd_nfe=62 | max|h|=14.2
+Checkpoint saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\checkpoints\kan_h40\latest.pt
+kan_h40 | epoch 18/25 | train_loss=0.338175 | val_AUROC=0.794690 | val_AUPRC=0.406613 | best_AUPRC=0.415083 | best_epoch=14 | patience=4/4 | train_time=45.61s | val_time=3.34s | epoch_time=48.95s | model_time=1048.65s | gpu_peak=21.5 MiB
+Early stopping activated for kan_h40 at epoch 18: validation AUPRC did not improve by at least 0 for 4 epochs.
+Best checkpoint restored for kan_h40: epoch 14, validation AUPRC=0.415083.
+Test evaluation begins for kan_h40.
+Run saved: C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4\runs\kan_h40.json
+
+===== run started 2026-10-06T07:58:50.518918+00:00 argv=['--aggregate'] =====
+Aggregated 6 runs into C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\outputs\experiment_4.

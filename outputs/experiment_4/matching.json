@@ -1,0 +1,105 @@
+{
+  "counts_trainable_parameters_only": true,
+  "entries": [
+    {
+      "chosen": {
+        "gap": -16,
+        "gap_pct": -0.2840404757677969,
+        "grid": 3,
+        "hidden_width": 39,
+        "parameters": 5617
+      },
+      "hidden_dim": 8,
+      "kan_spline_order": 3,
+      "mlp_parameters": 5633,
+      "mlp_width": 64,
+      "runner_ups": [
+        {
+          "gap": 35,
+          "grid": 4,
+          "hidden_width": 35,
+          "parameters": 5668
+        },
+        {
+          "gap": -50,
+          "grid": 5,
+          "hidden_width": 31,
+          "parameters": 5583
+        },
+        {
+          "gap": -118,
+          "grid": 4,
+          "hidden_width": 34,
+          "parameters": 5515
+        }
+      ]
+    },
+    {
+      "chosen": {
+        "gap": 20,
+        "gap_pct": 0.2614720878546215,
+        "grid": 3,
+        "hidden_width": 21,
+        "parameters": 7669
+      },
+      "hidden_dim": 20,
+      "kan_spline_order": 3,
+      "mlp_parameters": 7649,
+      "mlp_width": 64,
+      "runner_ups": [
+        {
+          "gap": 102,
+          "grid": 5,
+          "hidden_width": 17,
+          "parameters": 7751
+        },
+        {
+          "gap": 143,
+          "grid": 4,
+          "hidden_width": 19,
+          "parameters": 7792
+        },
+        {
+          "gap": -226,
+          "grid": 4,
+          "hidden_width": 18,
+          "parameters": 7423
+        }
+      ]
+    },
+    {
+      "chosen": {
+        "gap": 29,
+        "gap_pct": 0.2634208374965937,
+        "grid": 4,
+        "hidden_width": 13,
+        "parameters": 11038
+      },
+      "hidden_dim": 40,
+      "kan_spline_order": 3,
+      "mlp_parameters": 11009,
+      "mlp_width": 64,
+      "runner_ups": [
+        {
+          "gap": 272,
+          "grid": 5,
+          "hidden_width": 12,
+          "parameters": 11281
+        },
+        {
+          "gap": 272,
+          "grid": 3,
+          "hidden_width": 15,
+          "parameters": 11281
+        },
+        {
+          "gap": -376,
+          "grid": 3,
+          "hidden_width": 14,
+          "parameters": 10633
+        }
+      ]
+    }
+  ],
+  "generated_utc": "2026-10-06T07:26:45.833943+00:00"
+}

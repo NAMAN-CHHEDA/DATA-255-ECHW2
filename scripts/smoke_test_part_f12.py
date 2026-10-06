@@ -112,14 +112,15 @@ def main() -> int:
         assert not experiment_1_output.exists()
 
         checkpoint_dir = experiment_1_dir / "checkpoints"
-        checkpoint_dir.mkdir(parents=True)
         for model_key in (
             "gru_baseline",
             "mlp_neural_ode",
             "kan_neural_ode",
             "ltc",
         ):
-            (checkpoint_dir / f"{model_key}_best.pt").write_bytes(b"temporary")
+            model_checkpoint_dir = checkpoint_dir / model_key
+            model_checkpoint_dir.mkdir(parents=True)
+            (model_checkpoint_dir / "best.pt").write_bytes(b"temporary")
 
         validate_experiment_2(
             cache_path,

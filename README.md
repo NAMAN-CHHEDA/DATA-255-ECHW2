@@ -243,6 +243,62 @@ outputs. `--final` checks completed experiment artifacts and writing, reports
 the submission as not ready when required items are absent, and never creates
 or changes files.
 
+## Deliberate deviations from the starter code
+
+- **Neural ODE encoder sees time.** The MLP-ODE and KAN-ODE share one encoder
+  whose per-timestep input is `[values, mask, delta_t/48, t/48]` (37 dims)
+  instead of `[values, mask]`, so observation timing is not discarded by the
+  masked mean. Encoder, solver, head, and loss stay identical between the two.
+- **Time input to the vector field is `t/48`** in both `ODEFuncMLP` and
+  `ODEFuncKAN`, keeping it inside the KAN spline grid.
+- **LTC/CfC timespans are real inter-step gaps** (`diff` of observation times,
+  clamp minimum as the first-step epsilon), still clamped to [1e-4, 48].
+- **Early stopping monitors validation AUPRC** and gradients are clipped to
+  `GRAD_CLIP_NORM` in the shared training step.
+- **Experiment 1 headline has four rows** (GRU, MLP-ODE, KAN-ODE, LTC) and
+  reports both train-only and train+validation seconds per epoch. CfC is never
+  a headline row; `python scripts/time_ltc_vs_cfc.py --run` times LTC vs CfC
+  for 3 epochs into `outputs/experiment_1/ltc_vs_cfc_timing.csv`.
+- `scripts/run_experiment_1.py --run` also writes `outputs/experiment_1/train.log`.
+
+## Protocol note: patience
+
+GRU and MLP-ODE in Experiment 1 used patience 10; KAN, LTC and Experiments 2 and 4 use patience 4.
+This is a protocol note, not a bug (see `docs/DECISIONS.md`).
+
+## Time-saving choices (and which are deviations)
+
+Deviations from a full-protocol run (each is recorded in the results tables):
+- **Wall-clock cap** of 20 minutes per run (`--max-run-minutes`, `0` disables) in
+  Experiments 1, 2 (retrain) and 4. A capped run stops after its current epoch,
+  restores the best checkpoint, is tested as usual, and is flagged
+  `time_capped` in every table and footnoted in the plots.
+- **Smaller, capacity-matched KAN.** The Experiment 1 KAN-ODE uses the direct-search
+  matched width and grid for h=20 (same trainable-parameter budget as the
+  MLP-ODE, within about 1%), not a larger KAN. Experiment 1 KAN is
+  capacity-matched to MLP-ODE.
+- **Partial retraining in Experiment 2.** Default: GRU and MLP-ODE only, at 50% and 25%
+  retained, max 25 epochs (`--retrain-models`, `--levels` for more).
+- **Reduced epoch budget** (max 25) for Experiment 2 retraining and Experiment 4.
+- **Reused h=20 runs.** Experiment 4 imports the h=20 MLP-ODE and KAN-ODE results
+  from Experiment 1 when the configurations match (the MLP-ODE used patience 10;
+  `--no-reuse` retrains them).
+
+Not deviations (they do not change results):
+- Eval batch size 256 for the batch-invariant models (GRU, LTC); the ODE models
+  keep batch size 32 because their adaptive solver makes outputs batch-dependent.
+- Probe subsample (at most 200 points) and reduced plot sizes in Experiment 3;
+  KAN `symbolic_enabled=False` during training (the symbolic branch is exactly zero).
+
+## Running the remaining experiments
+
+`python -u scripts/run_all.py --dry-list` prints the plan; `python -u
+scripts/run_all.py` runs it unattended (log: `outputs/run_all.log`, progress:
+`outputs/STATUS.json`). Experiments can also be run individually with
+`--dry-run` / `--run`; Experiment 4 takes `--family`, `--hidden-dim`,
+`--aggregate`; Experiment 2 takes `--retrain` and `--retrain-models`; the KAN
+spline range can be overridden with `--kan-grid-range LOW HIGH`.
+
 ## Layout
 
 ```text

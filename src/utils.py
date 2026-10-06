@@ -34,6 +34,15 @@ from src.config import (  # noqa: E402
 T = TypeVar("T")
 
 
+def as_cpu_rng_state(state: Any) -> Any:
+    """Return the detached CPU byte tensor required by PyTorch RNG setters."""
+    import torch
+
+    if not isinstance(state, torch.Tensor):
+        raise TypeError("RNG state must be a torch.Tensor.")
+    return state.detach().to(device="cpu", dtype=torch.uint8).contiguous()
+
+
 def set_seed(seed: int = SEED) -> None:
     """Seed Python, NumPy, and PyTorch when those libraries are installed.
 
@@ -69,20 +78,29 @@ def seed_worker(worker_id: int) -> None:
     np.random.seed(worker_seed)
 
 
-def move_to_device(value: T, device: str | Any) -> T:
+def move_to_device(
+    value: T,
+    device: str | Any,
+    non_blocking: bool = False,
+) -> T:
     """Recursively move tensors while preserving non-tensor batch metadata."""
     import torch
 
     if isinstance(value, torch.Tensor):
-        return value.to(device)  # type: ignore[return-value]
+        return value.to(device, non_blocking=non_blocking)  # type: ignore[return-value]
     if isinstance(value, dict):
         return {
-            key: move_to_device(item, device) for key, item in value.items()
+            key: move_to_device(item, device, non_blocking)
+            for key, item in value.items()
         }  # type: ignore[return-value]
     if isinstance(value, list):
-        return [move_to_device(item, device) for item in value]  # type: ignore[return-value]
+        return [
+            move_to_device(item, device, non_blocking) for item in value
+        ]  # type: ignore[return-value]
     if isinstance(value, tuple):
-        return tuple(move_to_device(item, device) for item in value)  # type: ignore[return-value]
+        return tuple(
+            move_to_device(item, device, non_blocking) for item in value
+        )  # type: ignore[return-value]
     return value
 
 

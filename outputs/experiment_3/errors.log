@@ -1,0 +1,12 @@
+[2026-10-06T07:25:49.564391+00:00] prune
+Traceback (most recent call last):
+  File "C:\Users\naman\Desktop\ECHW2\DATA-255-ECHW2\scripts\run_experiment_3.py", line 378, in run_experiment
+    pruned = network.prune()
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\naman\AppData\Local\Programs\Python\Python312\Lib\site-packages\kan\MultKAN.py", line 1812, in prune
+    self.log_history('prune')
+  File "C:\Users\naman\AppData\Local\Programs\Python\Python312\Lib\site-packages\kan\MultKAN.py", line 426, in log_history
+    with open(self.ckpt_path+'/history.txt', 'a') as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\naman\\Desktop\\ECHW2\\DATA-255-ECHW2\\outputs\\experiment_3\\pykan_ckpt/history.txt'
+

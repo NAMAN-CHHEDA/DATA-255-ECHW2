@@ -1,0 +1,168 @@
+{
+  "configuration": {
+    "BATCH_SIZE": 32,
+    "EARLY_STOPPING_PATIENCE": 10,
+    "EPOCHS": 50,
+    "GRU_HIDDEN_SIZE": 32,
+    "KAN_GRID": 5,
+    "KAN_GRID_RANGE": [
+      -1.0,
+      1.0
+    ],
+    "KAN_HIDDEN_WIDTH_MULTIPLIER": 2,
+    "KAN_SPLINE_ORDER": 3,
+    "LEARNING_RATE": 0.001,
+    "LIQUID_BATCH_MODE": "per_sample_compat",
+    "LIQUID_ODE_UNFOLDS": 6,
+    "LIQUID_TIMESPAN_MAX": 48.0,
+    "LIQUID_TIMESPAN_MIN": 0.0001,
+    "LIQUID_UNITS": 32,
+    "N_VARS": 12,
+    "ODE_ATOL": 0.0001,
+    "ODE_HIDDEN_DIM": 20,
+    "ODE_RTOL": 0.001,
+    "ODE_SOLVER": "dopri5",
+    "ODE_WIDTH": 64,
+    "SEED": 8893,
+    "TEST_RATIO": 0.15,
+    "TRAIN_RATIO": 0.7,
+    "VAL_RATIO": 0.15,
+    "WEIGHT_DECAY": 0.0001
+  },
+  "device": "cuda",
+  "drop_seeds": [
+    8893,
+    8894,
+    8895
+  ],
+  "experiment": 2,
+  "experiment_1_consistency": [
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.8091631516394397,
+      "experiment_2": 0.8091631516394397,
+      "metric": "auroc",
+      "model": "GRU",
+      "ok": true
+    },
+    {
+      "abs_difference": 3.0492598527498416e-05,
+      "experiment_1": 0.42101177893578445,
+      "experiment_2": 0.42098128633725695,
+      "metric": "auprc",
+      "model": "GRU",
+      "ok": true
+    },
+    {
+      "abs_difference": 2.1979212760925293e-06,
+      "experiment_1": 0.09990337491035461,
+      "experiment_2": 0.0999055728316307,
+      "metric": "brier_score",
+      "model": "GRU",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.7797068350772529,
+      "experiment_2": 0.7797068350772529,
+      "metric": "auroc",
+      "model": "MLP-ODE",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.3542911252131103,
+      "experiment_2": 0.3542911252131103,
+      "metric": "auprc",
+      "model": "MLP-ODE",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.16212168335914612,
+      "experiment_2": 0.16212168335914612,
+      "metric": "brier_score",
+      "model": "MLP-ODE",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.7952506350353056,
+      "experiment_2": 0.7952506350353056,
+      "metric": "auroc",
+      "model": "KAN-ODE",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.37036561182862643,
+      "experiment_2": 0.37036561182862643,
+      "metric": "auprc",
+      "model": "KAN-ODE",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.10414763540029526,
+      "experiment_2": 0.10414763540029526,
+      "metric": "brier_score",
+      "model": "KAN-ODE",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.43667124979608957,
+      "experiment_2": 0.43667124979608957,
+      "metric": "auroc",
+      "model": "LTC",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.13062115810272776,
+      "experiment_2": 0.13062115810272776,
+      "metric": "auprc",
+      "model": "LTC",
+      "ok": true
+    },
+    {
+      "abs_difference": 0.0,
+      "experiment_1": 0.1407608687877655,
+      "experiment_2": 0.1407608687877655,
+      "metric": "brier_score",
+      "model": "LTC",
+      "ok": true
+    }
+  ],
+  "mode": "zero_shot",
+  "models": [
+    "gru_baseline",
+    "mlp_neural_ode",
+    "kan_neural_ode",
+    "ltc"
+  ],
+  "package_versions": {
+    "matplotlib": "3.11.2",
+    "ncps": "1.0.1",
+    "numpy": "2.5.3",
+    "pykan": "0.2.8",
+    "scikit-learn": "1.9.1",
+    "torch": "2.14.1+cu130",
+    "torchdiffeq": "0.2.5"
+  },
+  "retained_percentages": [
+    100,
+    75,
+    50,
+    25
+  ],
+  "seed": 8893,
+  "source_checkpoints": {
+    "gru_baseline": "C:\\Users\\naman\\Desktop\\ECHW2\\DATA-255-ECHW2\\outputs\\experiment_1\\checkpoints\\gru_baseline\\best.pt",
+    "kan_neural_ode": "C:\\Users\\naman\\Desktop\\ECHW2\\DATA-255-ECHW2\\outputs\\experiment_1\\checkpoints\\kan_neural_ode\\best.pt",
+    "ltc": "C:\\Users\\naman\\Desktop\\ECHW2\\DATA-255-ECHW2\\outputs\\experiment_1\\checkpoints\\ltc\\best.pt",
+    "mlp_neural_ode": "C:\\Users\\naman\\Desktop\\ECHW2\\DATA-255-ECHW2\\outputs\\experiment_1\\checkpoints\\mlp_neural_ode\\best.pt"
+  },
+  "timestamp_utc": "2026-10-06T07:23:37.108745+00:00",
+  "zero_shot_no_retraining": true
+}

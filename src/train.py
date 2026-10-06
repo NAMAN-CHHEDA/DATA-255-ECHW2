@@ -1,13 +1,9 @@
-"""Training entry point.
-
-The public command is ``run_experiment``. It checks configuration and stops
-before optimization. ``fit`` is the function to implement later.
-"""
+"""Shared forward adapters and one-epoch training step for all models."""
 
 from __future__ import annotations
 
-import importlib
 import sys
+import time
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping
 
@@ -20,28 +16,8 @@ if __package__ in {None, ""}:
     if str(_ROOT) not in sys.path:
         sys.path.insert(0, str(_ROOT))
 
-from src.config import (  # noqa: E402
-    BATCH_SIZE,
-    EARLY_STOPPING_METRIC,
-    EARLY_STOPPING_MODE,
-    EARLY_STOPPING_PATIENCE,
-    EPOCHS,
-    LEARNING_RATE,
-    RAW_DATA_DIR,
-    SEED,
-    WEIGHT_DECAY,
-    checkpoint_path,
-    format_config,
-    processed_path,
-    resolve_device,
-    validate_config,
-)
-from src.utils import (  # noqa: E402
-    ElapsedTimer,
-    directory_has_data,
-    move_to_device,
-    set_seed,
-)
+from src.config import GRAD_CLIP_NORM  # noqa: E402
+from src.utils import ElapsedTimer, move_to_device  # noqa: E402
 
 Batch = Mapping[str, Any]
 ForwardAdapter = Callable[[nn.Module, Batch], torch.Tensor]
@@ -49,6 +25,9 @@ ForwardAdapter = Callable[[nn.Module, Batch], torch.Tensor]
 
 def forward_gru(model: nn.Module, batch: Batch) -> torch.Tensor:
     """Adapt a padded irregular batch to the hourly GRU final logit."""
+    if "hourly_values" in batch and "hourly_mask" in batch:
+        return model(batch["hourly_values"], batch["hourly_mask"])
+
     from src.models.gru_baseline import prepare_hourly_gru_inputs
 
     hourly_values, hourly_mask = prepare_hourly_gru_inputs(
@@ -66,6 +45,8 @@ def forward_neural_ode(model: nn.Module, batch: Batch) -> torch.Tensor:
         values=batch["values"],
         mask=batch["mask"],
         valid_time_mask=batch["valid_time_mask"],
+        times=batch["times"],
+        delta_t=batch["delta_t"],
         final_time=48.0,
     )
 
@@ -77,6 +58,7 @@ def forward_liquid(model: nn.Module, batch: Batch) -> torch.Tensor:
         mask=batch["mask"],
         delta_t=batch["delta_t"],
         valid_time_mask=batch["valid_time_mask"],
+        times=batch["times"],
     )
 
 
@@ -107,7 +89,10 @@ def _validate_logits(logits: torch.Tensor, batch_size: int) -> None:
             f"Forward adapter must return logits shaped ({batch_size},), "
             f"got {tuple(logits.shape)}."
         )
-    if not torch.isfinite(logits).all():
+    finite = torch.isfinite(logits).all()
+    if logits.device.type == "cuda" and hasattr(torch, "_assert_async"):
+        torch._assert_async(finite, "Model produced non-finite logits.")
+    elif not finite:
         raise FloatingPointError("Model produced non-finite logits.")
 
 
@@ -117,163 +102,98 @@ def train_one_epoch(
     optimizer: torch.optim.Optimizer,
     forward_fn: ForwardAdapter,
     device: str | torch.device,
+    progress_every: int = 0,
+    progress_label: str = "",
+    time_limit_seconds: float | None = None,
 ) -> tuple[float, float]:
-    """Train for one epoch and return sample-mean BCE loss and wall seconds."""
+    """Train for one epoch and return sample-mean BCE loss and wall seconds.
+
+    With ``progress_every > 0`` a line with the batch index and elapsed
+    seconds is printed every that many batches (no CUDA synchronization).
+    ``time_limit_seconds`` raises ``TimeoutError("FIRST_EPOCH_TIMEOUT ...")``
+    if the epoch runs longer (used by the unattended driver's KAN guard).
+    """
     model.to(device)
     model.train()
-    total_loss = 0.0
+    resolved_device = torch.device(device)
+    total_loss = torch.zeros((), dtype=torch.float64, device=resolved_device)
     sample_count = 0
 
+    try:
+        total_batches: int | str = len(loader)  # type: ignore[arg-type]
+    except TypeError:
+        total_batches = "?"
+
+    epoch_start = time.perf_counter()
+
+    def timer_elapsed() -> float:
+        return time.perf_counter() - epoch_start
+
     with ElapsedTimer() as timer:
-        for raw_batch in loader:
-            batch = move_to_device(raw_batch, device)
+        for batch_index, raw_batch in enumerate(loader, start=1):
+            batch = move_to_device(
+                raw_batch,
+                device,
+                non_blocking=resolved_device.type == "cuda",
+            )
             labels = batch["label"].to(dtype=torch.float32)
             if labels.ndim != 1:
                 labels = labels.reshape(-1)
 
             optimizer.zero_grad(set_to_none=True)
+            ode_func = getattr(model, "ode_func", None)
+            if ode_func is not None:
+                ode_func.nfe = 0  # per-batch NFE counter (diagnostic only)
             logits = forward_fn(model, batch)
             _validate_logits(logits, labels.numel())
             loss = F.binary_cross_entropy_with_logits(logits, labels)
-            if not torch.isfinite(loss):
+            finite_loss = torch.isfinite(loss)
+            if loss.device.type == "cuda" and hasattr(torch, "_assert_async"):
+                torch._assert_async(
+                    finite_loss,
+                    "Training loss became non-finite.",
+                )
+            elif not finite_loss:
                 raise FloatingPointError("Training loss became non-finite.")
             loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), GRAD_CLIP_NORM)
             optimizer.step()
 
+            if progress_every > 0 and batch_index % progress_every == 0:
+                line = (
+                    f"{progress_label} batch {batch_index}/{total_batches} | "
+                    f"elapsed={timer_elapsed():.1f}s"
+                )
+                if ode_func is not None:
+                    forward_nfe = int(getattr(model, "last_forward_nfe", 0))
+                    max_state = getattr(model, "last_max_abs_state", None)
+                    # The only extra sync: reading max|h| on progress batches.
+                    max_text = (
+                        "n/a" if max_state is None else f"{float(max_state):.3g}"
+                    )
+                    line += (
+                        f" | fwd_nfe={forward_nfe}"
+                        f" | bwd_nfe={ode_func.nfe - forward_nfe}"
+                        f" | max|h|={max_text}"
+                    )
+                print(line, flush=True)
+
+            if (
+                time_limit_seconds is not None
+                and timer_elapsed() > time_limit_seconds
+            ):
+                raise TimeoutError(
+                    f"FIRST_EPOCH_TIMEOUT: epoch exceeded {time_limit_seconds:.0f}s "
+                    f"after {batch_index} batches."
+                )
+
             batch_size = labels.numel()
-            total_loss += float(loss.detach().item()) * batch_size
+            total_loss += loss.detach().to(dtype=torch.float64) * batch_size
             sample_count += batch_size
 
-    if sample_count == 0:
-        raise ValueError("Training loader produced no samples.")
-    return total_loss / sample_count, timer.seconds
-
-# String targets only. Importing a class also imports torch, so that happens
-# inside ``load_model_class`` when training is implemented.
-EXPERIMENTS: dict[str, dict[str, str | int]] = {
-    "gru_baseline": {
-        "number": 1,
-        "title": "Discrete-time GRU baseline",
-        "qualname": "src.models.gru_baseline:GRUBaseline",
-    },
-    "mlp_neural_ode": {
-        "number": 2,
-        "title": "MLP Neural ODE",
-        "qualname": "src.models.mlp_neural_ode:MLPNeuralODE",
-    },
-    "kan_neural_ode": {
-        "number": 3,
-        "title": "KAN Neural ODE",
-        "qualname": "src.models.kan_neural_ode:KANNeuralODE",
-    },
-    "liquid_model": {
-        "number": 4,
-        "title": "Liquid time-constant model",
-        "qualname": "src.models.liquid_model:LiquidModel",
-    },
-}
-
-
-def load_model_class(model_key: str) -> type:
-    """Import the ``nn.Module`` subclass registered for ``model_key``.
-
-    TODO: call this from ``fit`` after the processed cache supplies
-    ``input_dim`` and ``static_dim``. Construct the module with values from
-    ``src.config``, then move it to the resolved device.
-    """
-    spec = EXPERIMENTS[model_key]
-    qualname = str(spec["qualname"])
-    module_name, class_name = qualname.split(":")
-    module = importlib.import_module(module_name)
-    model_cls = getattr(module, class_name)
-    return model_cls
-
-
-def fit(model_key: str, device: str) -> None:
-    """Train one model with early stopping.
-
-    TODO:
-    - load train and validation stays from the processed cache
-    - build loaders with ``BATCH_SIZE`` and the collate function
-    - optimize with Adam (``LEARNING_RATE``, ``WEIGHT_DECAY``)
-    - use binary cross-entropy with logits
-    - if a positive-class weight is used, estimate it on the training split only
-    - score the validation split with ``EARLY_STOPPING_METRIC``
-    - stop after ``EARLY_STOPPING_PATIENCE`` epochs without improvement
-      (``EARLY_STOPPING_MODE``)
-    - keep at most ``EPOCHS`` epochs
-    - clip gradients with ``GRAD_CLIP_NORM``
-    - write a checkpoint to ``checkpoint_path(model_key)`` only after real updates
-    - append ``RUN_LOG.txt`` with values this process printed
-
-    The test split is not used for fitting or early stopping.
-    """
-    raise NotImplementedError(
-        "TODO: training loop is not implemented. "
-        f"model={model_key}, device={device}, epochs={EPOCHS}, "
-        f"lr={LEARNING_RATE}, batch_size={BATCH_SIZE}, "
-        f"weight_decay={WEIGHT_DECAY}, "
-        f"monitor={EARLY_STOPPING_METRIC} ({EARLY_STOPPING_MODE}), "
-        f"patience={EARLY_STOPPING_PATIENCE}. "
-        "No parameters were updated."
-    )
-
-
-def run_experiment(model_key: str, dry_run: bool = False) -> int:
-    """Validate config, print it, and stop before training.
-
-    A dry run exits 0 after printing, including when torch is not installed.
-    A full run exits 1 until raw data, the processed cache, and ``fit`` exist.
-    Neither path writes metrics or checkpoints.
-    """
-    if model_key not in EXPERIMENTS:
-        known = ", ".join(sorted(EXPERIMENTS))
-        print(f"Unknown model '{model_key}'. Known models: {known}.", file=sys.stderr)
-        return 2
-
-    validate_config()
-    set_seed(SEED)
-
-    spec = EXPERIMENTS[model_key]
-    try:
-        device = resolve_device()
-    except ImportError:
-        if not dry_run:
-            print(
-                "PyTorch is not installed. Install requirements before training.",
-                file=sys.stderr,
-            )
-            return 1
-        device = "not resolved (torch is not installed)"
-    except RuntimeError as exc:
-        print(str(exc), file=sys.stderr)
-        return 1
-
-    print(f"Experiment {spec['number']}: {spec['title']}")
-    print(f"Registered class: {spec['qualname']}")
-    print(format_config(device))
-    print(f"Intended checkpoint: {checkpoint_path(model_key)}")
-
-    if dry_run:
-        print("Dry run only. No data was loaded and no training was started.")
-        return 0
-
-    if not directory_has_data(RAW_DATA_DIR):
-        print("Stopping before training.")
-        print(f"Raw data is not in {RAW_DATA_DIR}.")
-        print("This starter does not download PhysioNet files.")
-        print("No model was fit and no metric was computed.")
-        return 1
-
-    cache = processed_path()
-    if not cache.is_file():
-        print("Stopping before training.")
-        print(f"Processed cache was not found at {cache}.")
-        print("Preprocessing is not implemented, so training did not start.")
-        print("No model was fit and no metric was computed.")
-        return 1
-
-    print("Stopping before training.")
-    print("The training loop is not implemented.")
-    print("No model was fit and no metric was computed.")
-    return 1
+        if sample_count == 0:
+            raise ValueError("Training loader produced no samples.")
+        # One synchronization per epoch supplies the logged mean and makes the
+        # reported training-phase wall time include queued CUDA work.
+        mean_loss = float((total_loss / sample_count).item())
+    return mean_loss, timer.seconds

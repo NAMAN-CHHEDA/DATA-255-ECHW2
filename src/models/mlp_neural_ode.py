@@ -6,6 +6,7 @@ import torch
 from torch import nn
 
 from src.config import (
+    MAX_HOURS,
     N_VARS,
     ODE_ATOL,
     ODE_HIDDEN_DIM,
@@ -24,6 +25,7 @@ class ODEFuncMLP(nn.Module):
         if hidden_dim < 1 or width < 1:
             raise ValueError("hidden_dim and width must be positive.")
         self.hidden_dim = hidden_dim
+        self.nfe = 0  # function evaluations since the last reset (diagnostic)
         self.network = nn.Sequential(
             nn.Linear(hidden_dim + 1, width),
             nn.Tanh(),
@@ -34,11 +36,13 @@ class ODEFuncMLP(nn.Module):
 
     def forward(self, time: torch.Tensor, state: torch.Tensor) -> torch.Tensor:
         """Return a derivative with the same shape as ``state``."""
+        self.nfe += 1
+        # t / 48 keeps the time input in [0, 1], inside the KAN spline grid.
         time_feature = torch.ones(
             (*state.shape[:-1], 1),
             dtype=state.dtype,
             device=state.device,
-        ) * time.to(dtype=state.dtype, device=state.device)
+        ) * (time.to(dtype=state.dtype, device=state.device) / MAX_HOURS)
         return self.network(torch.cat([state, time_feature], dim=-1))
 
 

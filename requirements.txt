@@ -6,3 +6,6 @@ scikit-learn
 matplotlib
 tqdm
 torchdiffeq
+pykan
+ncps
+pyyaml

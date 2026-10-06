@@ -1,0 +1,24 @@
+[
+  {
+    "device": "cuda",
+    "epochs": 3,
+    "final_train_loss": 0.4185891610236947,
+    "mean_train_seconds_per_epoch": 983.9307081999917,
+    "mean_train_val_seconds_per_epoch": 1050.1173506333337,
+    "model": "LTC",
+    "total_seconds": 3150.352192899998,
+    "trainable_parameters": 7314,
+    "validation_auprc_last_epoch": 0.14440856488908405
+  },
+  {
+    "device": "cuda",
+    "epochs": 3,
+    "final_train_loss": 0.45320001368144175,
+    "mean_train_seconds_per_epoch": 515.9350727000079,
+    "mean_train_val_seconds_per_epoch": 549.3629375666593,
+    "model": "CFC",
+    "total_seconds": 1648.088998399995,
+    "trainable_parameters": 4936,
+    "validation_auprc_last_epoch": 0.23788192616743611
+  }
+]
